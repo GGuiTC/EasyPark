@@ -1,0 +1,54 @@
+<%- include ("../partials/header.ejs") %>
+<link rel="stylesheet" href="css2/singin-page.css">
+</head>
+<%- include ("../partials/navbar2.ejs") %>
+
+<body>
+    <div class="container">
+
+        <div class="login">
+            <div class="tudo_tm tudo_space">
+                <h2 align="center" class="font_yellow">Já tem uma conta?</h2>
+                <div class="button">
+                    <h5 align="center" class="font_yellow">Faça seu login!</h5>
+                    <a href="/login_page">
+                        <button class="btn_yellow btn_bw">Log in</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="singin">
+            <form action="/cadastro_usuario" method="post">
+                <div class="tudo_tm2 tudo_space">
+                    <h2 align="center">Cadastre-se aqui!</h2>
+                    
+                    <div class="inputes">
+                        <label>Nome</label>
+                        <input type="text" name="nome" id="nome" class="input_inputes" placeholder="Digite seu nome" required>
+                    </div>
+                    <div class="inputes">
+                        <label>Email</label>
+                        <input type="text" name="email" id="email" class="input_inputes" placeholder="Digite seu email" required>
+                    </div>
+        
+                    <div class="inputes">
+                        <label>Senha</label>
+                        <input type="password" name="senha" id="senha" class="input_inputes" placeholder="Digite sua senha" required>
+                    </div>
+        
+                    <button type="submit" class="btn_black btn_bw">Sing in</button>
+                </div>
+            </form>
+        </div>
+
+
+
+
+    </div>
+</body>
+
+<%- include ("../partials/footer.ejs") %>

@@ -1,0 +1,39 @@
+.body-bg-image{
+    background-image: url("/img/body-bg-image.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.body-bg-image .words{
+    display: flex;
+}
+.body-bg-image .words .welcome{
+    font-size: 135px;
+    font-weight: 700;
+    font-style: normal;
+    display: inline;
+    margin-top: 70px;
+
+    background-image: linear-gradient(to right, rgb(108, 108, 108), rgb(211, 211, 211));
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    color: black;
+}
+.body-bg-image .words .wlc{
+    margin-top: 30px;
+
+    font-weight: 700;
+    font-style: normal;
+    display: inline;
+}
+.container_peneu{
+    display: flex;
+    flex-direction:row-reverse;
+}
+.container_rodas .peneu{
+    height: 500px;
+    width: 500px;
+}

@@ -1,0 +1,14 @@
+.tetudo{
+    height: 88vh;
+    display: flex;
+}
+.metade1{
+    background-color: blue;
+    height: 100%;
+    width: 25vw;
+}
+.metade2{
+    background-color: red;
+    height: 100%;
+    width: 75vw;
+}

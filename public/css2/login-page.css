@@ -1,0 +1,41 @@
+.container_lg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88vh;
+}
+.tudo_tm{
+    height: 292px;
+    width: 362px;
+}
+.tudo_space{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form_singin{
+    height: 550px;
+    width: 410px;
+    background-color: var(--terciary-color);
+    display: flex;
+    justify-content: center;
+    padding-top: 79px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.form_lg{
+    height: 550px;
+    width: 410px;
+    padding-top: 79px;
+    display: flex;
+    justify-content: center;
+    border-style: solid;
+    border-color: var(--border-default);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.form_lg a{
+    color: var(--secundary-color);
+}

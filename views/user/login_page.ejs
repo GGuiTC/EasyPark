@@ -1,0 +1,57 @@
+<%- include ("../partials/header.ejs") %>
+<link rel="stylesheet" href="css2/login-page.css">
+</head>
+<%- include ("../partials/navbar2.ejs") %>
+
+<body>
+    <!-- Container peganto tudo -->
+    <div class="container_lg">
+
+        <!-- Form amarelo sing in para o usuário ir para a página de cadastro -->
+        <div class="form_singin">
+            <!-- Div pra centralização -->
+            <div class="tudo_tm tudo_space">
+                <h2 align="center">Não tem uma conta ainda?</h2>
+                <!-- Div pra separar o título do botão  -->
+                <div class="button">
+                    <h5 align="center" >Registre-se aqui!</h5>
+                    <a href="/singin_page">
+                        <button class="btn_black btn_bw">Sing in</button>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Form branco log in para o usuário fazer o login -->
+        <div class="form_lg">
+            <!-- Form pra enviar os dados para a indentificação do usuário -->
+            <form action="/loga_user" method="post">
+
+                <div class="tudo_tm tudo_space">
+                    <h2 align="center" class="font_yellow">Seja Bem-vindo</h2>
+                    
+                    <div class="inputes">
+                        <label>Email</label>
+                        <input type="text" name="email" id="email" class="input_inputes" placeholder="Digite seu email">
+                    </div>
+        
+                    <div class="inputes">
+                        <label>Senha</label>
+                        <input type="password" name="senha" id="senha" class="input_inputes" placeholder="Digite sua senha">
+                    </div>
+        
+                    <a href="#">Esqueceu sua senha?</a>
+    
+                    <button type="submit" class="btn_yellow btn_bw">Log in</button>
+                </div>
+
+            </form>
+            
+
+        </div>
+
+    </div>
+</body>
+
+<%- include ("../partials/footer.ejs") %>

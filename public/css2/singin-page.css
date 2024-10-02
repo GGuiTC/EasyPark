@@ -1,0 +1,40 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 88vh;
+}
+.tudo_tm{
+    height: 292px;
+    width: 362px;
+}
+.tudo_space{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.tudo_tm2{
+    height: 343px;
+    width: 362px;
+}
+.login{
+    height: 550px;
+    width: 410px;
+    padding-top: 79px;
+    display: flex;
+    justify-content: center;
+    border-style: solid;
+    border-color: var(--border-default);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.singin{
+    height: 550px;
+    width: 410px;
+    padding-top: 79px;
+    display: flex;
+    justify-content: center;
+    background-color: var(--terciary-color);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
