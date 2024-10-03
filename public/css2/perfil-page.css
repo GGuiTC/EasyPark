@@ -15,6 +15,22 @@
     align-items: center;
     margin-bottom: 20px;
 }
+
+
+.img-container{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+.img-container img{
+    height: 100px;
+    width: 100px;
+}
+.img-container img:hover{
+    content: url('/img/Property1=edit-photo.png');
+    transition: 1s;
+}
+
 .nomes{
     margin-left: 15px;
 }
