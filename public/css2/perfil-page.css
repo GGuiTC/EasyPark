@@ -3,12 +3,31 @@
     display: flex;
 }
 .metade1{
-    background-color: blue;
     height: 100%;
-    width: 25vw;
+    width: 30vw;
+    border-style: solid;
 }
+.menu-perfil{
+    margin-left: 40px;
+}
+.nome-perfil{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.nomes{
+    margin-left: 15px;
+}
+a{
+    color: var(--text-default);
+}
+a:hover{
+    color: var(--hovering-terciary-color);
+    transition: 500ms;
+}
+
 .metade2{
-    background-color: red;
     height: 100%;
-    width: 75vw;
+    width: 70vw;
+    border-style: solid;
 }
