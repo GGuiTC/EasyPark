@@ -8,6 +8,7 @@
     border-style: solid;
 }
 .menu-perfil{
+    margin-top: 40px;
     margin-left: 40px;
 }
 .nome-perfil{
@@ -41,6 +42,13 @@ a:hover{
     color: var(--hovering-terciary-color);
     transition: 500ms;
 }
+.align-center{
+    display: flex;
+    justify-content: center;
+}
+
+
+
 
 .metade2{
     height: 100%;
