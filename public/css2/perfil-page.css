@@ -5,7 +5,6 @@
 .metade1{
     height: 100%;
     width: 30vw;
-    border-style: solid;
 }
 .menu-perfil{
     margin-top: 40px;
@@ -47,11 +46,61 @@ a:hover{
     justify-content: center;
 }
 
-
-
-
 .metade2{
     height: 100%;
     width: 70vw;
+    display: flex;
+    align-items: center;
+}
+.container{
+    height: 90%;
+    width: 90%;
     border-style: solid;
+    border-color: var(--border-default);
+    border-radius: 10px;
+}
+.meu-perfil{
+    height: 100%;
+}
+.title-align{
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.metadinhas-align{
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+.metadinha1{
+    width: 40%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+}
+label{
+    display: flex;
+    height: 26.5px;
+    flex-direction: row-reverse;
+    margin-bottom: 20px;
+    color: var(--text-default);
+}
+
+.metadinha2{
+    width: 55%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+}
+.radio-group label{
+    display: inline;
+    margin-right: 30px;
+}
+.metadinha2 input{
+    padding: 0;
+    margin-bottom: 20px;
+    border-color: var(--border-default);
+    border-style: solid;
+    border-radius: 5px;
 }
