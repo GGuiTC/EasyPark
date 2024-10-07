@@ -5,6 +5,8 @@ const Usuario = require('./cont_users/Users');
 const ControleUsuario = require('./cont_users/controlUsers');
 // ao criar a tabela de banco de dados, dar um const Perfil aqui
 const ControlePerfil = require('./cont_perfil/controlPerfil');
+// ao criar a tabela de banco de dados, dar um const Vehicle aqui
+const ControleVeiculo = require('./cont_veiculo/controlVeiculo')
 const session = require('express-session');
 const adminAut = require('./middeware/adminAutoriz');
 
@@ -16,6 +18,7 @@ const adminAut = require('./middeware/adminAutoriz');
 
 app.use("/", ControleUsuario);
 app.use("/", ControlePerfil);
+app.use("/", ControleVeiculo);
 
 app.set("view engine","ejs");
 app.use(express.static('public'));
