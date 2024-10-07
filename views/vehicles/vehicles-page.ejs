@@ -1,14 +1,37 @@
 <%- include ("../partials/header.ejs") %>
+<link rel="stylesheet" href="css2/vehicles-page.css">
 </head>
 <%- include ("../partials/navbar2.ejs") %>
 <body>
     
     <div class="tetudo">
         <div class="metade1">
-
+            <div class="menu-perfil">
+                <%- include ("../partials/box-parts/nomePerfil.ejs") %> <!-- foto de perfil, nome de usuário e nome -->
+                <div class="menu">
+                    <ul>
+                        <li><a href="/perfil_page">Meu Perfil</a></li>
+                        <li>Meu Veículo</li>
+                        <li><a href="/reserv_page">Minhas Reservas</a></li>
+                        <li><a href="/accounts_page">Contas</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
+
         <div class="metade2">
-            
+            <div class="container">
+                <div class="meu-perfil">
+                    <div class="title-align">
+                        <h2>Meus veículos</h2>
+                    </div>
+
+                    <div class="vehicles-list">
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
