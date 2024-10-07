@@ -4,22 +4,15 @@
 <%- include ("../partials/navbar2.ejs") %>
 
 <body>
-    
-    <div class="tetudo">
 
+    <div class="tetudo"> 
         <div class="metade1">
+
+
+
             <div class="menu-perfil">
 
-                <div class="nome-perfil">
-                    <div class="img-container">
-                        <img class="perfil-photo" src="/img/icons8-male-user-preto.png" alt="">
-                    </div>
-                    
-                    <div class="nomes">
-                        <h5>Perfil321_.</h5>
-                        <h6>Perfil de Souza Ribeiro</h6>
-                    </div>
-                </div>
+                <%- include ("../partials/box-parts/nomePerfil.ejs") %> <!-- foto de perfil, nome de usuário e nome -->
 
                 <div class="menu">
                     <ul>
@@ -28,27 +21,25 @@
                         <li><a href="/Reserv_page">Minhas Reservas</a></li>
                         <li><a href="/Accounts_page">Contas</a></li>
                     </ul>
-                </div> 
+                </div>
             </div>
-
             <div class="align-center">
                 <a href="/logout">
                     <button class="btn_black">Sair</button>
                 </a>
             </div>
+
         </div>
-    
 
 
 
         <div class="metade2">
+
             <div class="container">
                 <div class="meu-perfil">
-
                     <div class="title-align">
                         <h2>Meu perfil</h2>
                     </div>
-
                     <div class="metadinhas-align">
                         <div class="metadinha1">
                             <label>Nome de usuário:</label>
@@ -62,13 +53,13 @@
                         </div>
     
                         <div class="metadinha2">
-                            <input type="text" name="user_name" id="user_name" value="Perfil321_.">
+                            <input class="input_inputes" type="text" name="user_name" id="user_name" value="Perfil321_.">
 
-                            <input type="text" name="name" id="name" value="Perfil de Souza Ribeiro">
+                            <input class="input_inputes" type="text" name="name" id="name" value="Perfil de Souza Ribeiro">
 
-                            <input type="text" name="email" id="email" value="perfil@email.com">
+                            <input class="input_inputes" type="text" name="email" id="email" value="perfil@email.com">
                             
-                            <input type="text" name="telefone" id="telefone" value="+98 (12) 12345-6789">
+                            <input class="input_inputes" type="text" name="telefone" id="telefone" value="+98 (12) 12345-6789">
 
                             <div class="radio-group">
                                 <input type="radio" id="masculino" name="sexo" value="masculino" checked>
@@ -81,19 +72,20 @@
                                 <label for="outro">Outro</label>
                             </div>
 
-                            <input type="text" name="cpf" id="cpf" value="123.456.789-10">
+                            <input class="input_inputes" type="text" name="cpf" id="cpf" value="123.456.789-10">
 
-                            <input type="text" name="rg" id="rg" value="1.234.567">
+                            <input class="input_inputes" type="text" name="rg" id="rg" value="1.234.567">
 
-                            <input type="text" name="data_nasc" id="data_nasc" value="01/01/1980">
+                            <input class="input_inputes" type="text" name="data_nasc" id="data_nasc" value="01/01/1980">
 
                             <button class="btn_yellow btn_sw">Gravar</button>
                         </div>
                     </div>
-
-
                 </div>
             </div>
+
+
+
         </div>
     </div>
 

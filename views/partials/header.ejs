@@ -39,6 +39,21 @@
         ul{
             list-style: none;
         }
+
+
+
+
+        a{
+            color: var(--text-default);
+        }
+        a:hover{
+            color: var(--hovering-terciary-color);
+            transition: 500ms;
+        }
+
+
+
+
         .btn_yellow{
             /*border: solid 3px rgb(239, 174, 10);*/
             border-radius: 8px;
@@ -120,6 +135,68 @@
             border-style: solid;
             border-color: var(--border-default);
             border-radius: 8px;
+            padding-left: 15px;
         }
 
+
+        /* perfil-page, vehicle-page, reserv-page */
+        .tetudo{
+            height: 88vh;
+            display: flex;
+        }
+        .metade1{
+            height: 100%;
+            width: 30vw;
+        }
+        .menu-perfil{
+            margin-top: 40px;
+            margin-left: 40px;
+        }
+        .nome-perfil{
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .img-container{
+            height: 100px;
+            width: 100px;
+            border-radius: 100%;
+        }
+        .img-container img{
+            height: 100px;
+            width: 100px;
+        }
+        .img-container img:hover{
+            content: url('/img/Property1=edit-photo.png');
+            transition: 1s;
+        }
+        .nomes{
+            margin-left: 15px;
+        }
+        .metade2{
+            height: 100%;
+            width: 70vw;
+            display: flex;
+            align-items: center;
+        }
+        .container{
+            height: 90%;
+            width: 90%;
+            border-style: solid;
+            border-color: var(--border-default);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+        }
+        .meu-perfil{
+            height: 100%;
+            width: 74%;
+        }
+        .title-align{
+            height: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
     </style>
