@@ -3,6 +3,8 @@ const app = express();
 const conexao = require('./database/basedados');
 const Usuario = require('./cont_users/Users');
 const ControleUsuario = require('./cont_users/controlUsers');
+// ao criar a tabela de banco de dados, dar um const Perfil aqui
+const ControlePerfil = require('./cont_perfil/controlPerfil');
 const session = require('express-session');
 const adminAut = require('./middeware/adminAutoriz');
 
@@ -13,6 +15,7 @@ const adminAut = require('./middeware/adminAutoriz');
     cookie:{maxAge: 86500 *30} }))
 
 app.use("/", ControleUsuario);
+app.use("/", ControlePerfil);
 
 app.set("view engine","ejs");
 app.use(express.static('public'));
@@ -29,10 +32,6 @@ app.get("/index2",adminAut, (req,res)=>{
 
 app.get("/",(req,res)=>{
     res.render("index");
-})
-
-app.get("/perfil_page", (req,res)=>{
-    res.render("perfil/perfil-page");
 })
 
 
