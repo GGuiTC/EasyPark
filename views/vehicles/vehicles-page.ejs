@@ -29,6 +29,52 @@
 
                     <div class="vehicles-list">
 
+                        <table class="table table-bordered"> 
+                            <thead> 
+                                <tr> 
+                                    <th>Tipo</th> 
+                                    <th>Marca</th> 
+                                    <th>Modelo</th> 
+                                    <th>Cor</th>
+                                    <th>Placa</th>
+                                    <th>Ações</th>
+                                </tr> 
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Carro</td>
+                                    <td>Mitsubishi</td>
+                                    <td>Lancer</td>
+                                    <td>Prata</td>
+                                    <td>ABC1D23</td>
+                                    <td>
+                                        <a href="edita-vehicle/id-veiculo-com-ejs" class="btn btn-warning">Editar</a> <!-- com certeza vai dar erro -->
+                                        <form method="POST" action="deleta-vehicle" style="display: inline" onsubmit="confirmaDeleta(event,this)"> <!-- com certeza vai dar erro -->
+                                            <input type="hidden" name="id" value="id-veiculo-com-ejs" /> 
+                                            <button class="btn btn-danger">Deletar</button> 
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Moto</td>
+                                    <td>Honda</td>
+                                    <td>Sahara</td>
+                                    <td>Vermelho</td>
+                                    <td>EFG3H45</td>
+                                    <td>
+                                        <a href="edita-vehicle/id-veiculo-com-ejs" class="btn btn-warning">Editar</a> <!-- com certeza vai dar erro -->
+                                        <form method="POST" action="deleta-vehicle" style="display: inline" onsubmit="confirmaDeleta(event,this)"> <!-- com certeza vai dar erro -->
+                                            <input type="hidden" name="id" value="id-veiculo-com-ejs" /> 
+                                            <button class="btn btn-danger">Deletar</button> 
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <a href="/cadastro-veiculos">
+                            <button class="btn_yellow">Adicionar</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -37,3 +83,12 @@
 
 </body>
 <%- include ("../partials/footer.ejs") %>
+<!-- <script>
+    function confirmaDeleta(event,formulario){
+       event.preventDefault();
+       decisao = confirm("Confirma exclusão??")        --------------- PRO USUÁRIO TER CERTEZA SE VAI OU NÃO EXCLUIR ---------------
+       if(decisao){
+          formulario.submit();
+       }
+    }
+ </script> -->
