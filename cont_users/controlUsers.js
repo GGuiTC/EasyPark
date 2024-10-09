@@ -14,6 +14,10 @@ router.get("/singin_page", (req,res)=>{
     res.render("user/singin_page")
 })
 
+router.get("/accounts_page", (req,res)=>{
+    res.render("user/change_account")
+})
+
 router.post("/cadastro_usuario", (req,res)=>{
     let email = req.body.email;
     let nivel_usuario = 2;
