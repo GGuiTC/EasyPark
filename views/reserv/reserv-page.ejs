@@ -1,7 +1,39 @@
 <%- include ("../partials/header.ejs") %>
+<link rel="stylesheet" href="css2/reserv-page.css">
 </head>
 <%- include ("../partials/navbar3.ejs") %>
 <body>
-    <h1>AHHHH RESERVAAAA</h1>
+    <div class="tetudo">
+
+        <div class="metade1">
+            <div class="menu-perfil">
+                <%- include ("../partials/box-parts/nomePerfil.ejs") %> <!-- foto de perfil, nome de usuário e nome -->
+                <div class="menu">
+                    <ul>
+                        <li><a href="/perfil_page">Meu Perfil</a></li>
+                        <li><a href="/vehicle_page">Meu Veículo</a></li>
+                        <li>Minhas Reservas</li>
+                        <li><a href="/accounts_page">Contas</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="metade2">
+            <div class="container">
+                <div class="meu-perfil">
+                    <div class="title-align">
+                        <h2>Minhas reservas</h2>
+                    </div>
+
+                    <div class="reserv-list">
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
 </body>
 <%- include ("../partials/footer.ejs") %>
