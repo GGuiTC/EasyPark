@@ -31,11 +31,11 @@ router.post("/cadastro_usuario", (req,res)=>{
                 senha: hash,
                 nivel_usuario: nivel_usuario,
             }).then(()=>{
-                res.render("user/singin_page");//ARRUMAR PARA NÃO DIRECIONAR PARA CADASTRO NOVAMENTE
+                res.render("user/login_page");//ARRUMAR PARA NÃO DIRECIONAR PARA CADASTRO NOVAMENTE
             })
         }
         else{
-            res.redirect("/")
+            res.redirect("/");
         }
     })
 })
