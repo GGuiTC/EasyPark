@@ -2,7 +2,7 @@ function adminAut(req, res, next) {
     if (req.session.usuario != undefined) {
         next();
     } else {
-        res.redirect("/")
+        res.redirect("/login_page")
     }
 }
 
