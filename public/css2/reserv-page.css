@@ -1,4 +1,52 @@
 .reserv-list{
     height: 80%;
+}
+.reserv{
+    height: 110px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-style: solid;
+    border-color: var(--border-default);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.day{
+    width: 19%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.day .yellow-bar{
+    height: 96%;
+    width: 15px;
+    margin-left: 2%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: var(--terciary-color);
+}
+.day .special-day{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+.day .special-day h3{
+    margin-bottom: 0;
+}
+.day .line{
+    height: 80%;
+    width: 1.6px;
+    background-color: var(--border-default);
+}
+.reserv-content{
+    width: 50%;
+}
+.cancel-button{
+    width: 15%;
+}
+.cancel-button a{
+    color: red;
 }
