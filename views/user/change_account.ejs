@@ -1,7 +1,30 @@
 <%- include ("../partials/header.ejs") %>
+<link rel="stylesheet" href="css2/accounts-page.css">
 </head>
 <%- include ("../partials/navbar3.ejs") %>
 <body>
-    <h1>AHHHHHHHHHH TROCA CONTA</h1>
+    <div class="tetudo justify-center">
+        <div class="container">
+            <div class="meu-perfil">
+                <div class="title-align">
+                    <h2>Contas</h2>
+                </div>
+                <div class="account-list">
+                    <div class="account">
+                        <div class="input_inputes photo-name">
+                            <img src="/img/icons8-male-user-preto.png" alt="">
+
+                            <p>perfil@email.com</p>
+                        </div>
+                        <div class="remove-button">
+                            <a href="/remove_account">
+                                <button class="btn_default">Remover</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <%- include ("../partials/footer.ejs") %>
