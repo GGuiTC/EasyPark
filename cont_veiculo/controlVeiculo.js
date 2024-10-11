@@ -8,6 +8,10 @@ router.get("/vehicle_page", (req,res)=>{
     res.render("vehicles/vehicles-page");
 })
 
+router.get("/cadastro-veiculos", (req,res)=>{
+    res.render("vehicles/cadastro-vehicles");
+})
+
 module.exports = router;
 
 
