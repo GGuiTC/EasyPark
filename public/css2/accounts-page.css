@@ -7,18 +7,23 @@
 .account{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 .input_inputes{
-    width: 70%;
+    width: 80%;
 }
 .photo-name{
     display: flex;
     align-items: center;
 }
 .photo-name img{
-    height: 40px;
+    height: 33px;
     margin-right: 20px;
 }
 .photo-name p{
     color: var(--text-default);
+}
+.change-button{
+    display: flex;
+    justify-content: center;
 }
