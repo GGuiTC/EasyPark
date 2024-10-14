@@ -1,7 +1,32 @@
 <%- include ("../partials/header.ejs") %>
+<link rel="stylesheet" href="css2/cadastro-vehicles.css">
 </head>
 <%- include ("../partials/navbar3.ejs") %>
 <body>
-    <h1>AHHHH CADASTRO VEHICLES</h1>
+    <div class="tetudo justify-center">
+        <div class="container">
+            <div class="meu-perfil">
+                <div class="title-align">
+                    <h2>Cadastro de veículos</h2>
+                </div>
+                <form action="/cadastro_veiculo">
+                    <div class="inputes">
+                        <label>Tipo</label>
+                        <select name="tipo" id="tipo" class="input_inputes" required>
+                            <option value="carro">Carro</option>
+                            <option value="moto">Moto</option>
+                            <option value="caminhão">Caminhão</option>
+                            <option value="van">Van</option>
+                            <option value="motorhome">Motorhome</option>
+                        </select>
+                    </div>
+                    <div class="inputes">
+                        <label>Nome</label>
+                        <input type="text" name="nome" id="nome" class="input_inputes" placeholder="Digite seu nome" required>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 <%- include ("../partials/footer.ejs") %>
