@@ -17,18 +17,18 @@ Perfil = conexao.define('perfil', {
         allowNull: false,
     },
     telefone:{
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     sexo: {
         type: Sequelize.ENUM('masculino', 'feminino', 'outro'),
     },
     cpf:{
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     rg:{
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
     },
     data_nasc:{

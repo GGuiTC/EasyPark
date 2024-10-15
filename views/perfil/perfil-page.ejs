@@ -61,37 +61,33 @@
 
                         <div class="metadinha2">
 
-                            <input class="input_inputes" type="text" name="name" id="name" value="Perfil de Souza Ribeiro">
+                            <form action="/cadastra-edita-perfil" method="post">
+                                <input class="input_inputes" type="text" name="nome" id="nome" value="Perfil de Souza Ribeiro">
+    
+                                <input class="input_inputes" type="text" name="email" id="email" value="perfil@email.com">
+                                
+                                <input class="input_inputes" type="text" name="telefone" id="telefone" value="9812123456789">
+    
+                                <div class="radio-group">
+                                    <input type="radio" id="masculino" name="sexo" value="masculino" checked>
+                                    <label for="masculino">Masculino</label>
+            
+                                    <input type="radio" id="feminino" name="sexo" value="feminino">
+                                    <label for="feminino">Feminino</label>
+            
+                                    <input type="radio" id="outro" name="sexo" value="outro">
+                                    <label for="outro">Outro</label>
+                                </div>
+    
+                                <input class="input_inputes" type="text" name="cpf" id="cpf" value="12345678910">
+    
+                                <input class="input_inputes" type="text" name="rg" id="rg" value="1234567">
+    
+                                <input class="input_inputes" type="date" name="data_nasc" id="data_nasc" value="1980-01-01">
+    
+                                <button type="submit" class="btn_yellow btn_sw">Gravar</button>
+                            </form>
 
-                            <input class="input_inputes" type="text" name="email" id="email" value="perfil@email.com">
-                            
-                            <input class="input_inputes" type="text" name="telefone" id="telefone" value="+98 (12) 12345-6789">
-
-                            <div class="radio-group">
-                                <input type="radio" id="masculino" name="sexo" value="masculino" checked>
-                                <label for="masculino">Masculino</label>
-        
-                                <input type="radio" id="feminino" name="sexo" value="feminino">
-                                <label for="feminino">Feminino</label>
-        
-                                <input type="radio" id="outro" name="sexo" value="outro">
-                                <label for="outro">Outro</label>
-                            </div>
-
-                            <input class="input_inputes" type="text" name="cpf" id="cpf" value="123.456.789-10">
-
-                            <input class="input_inputes" type="text" name="rg" id="rg" value="1.234.567">
-
-                            <input class="input_inputes" type="text" name="data_nasc" id="data_nasc" value="01/01/1980">
-
-
-
-
-
-
-
-
-                            <button class="btn_yellow btn_sw">Gravar</button>
                         </div>
                     </div>
                 </div>
