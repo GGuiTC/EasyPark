@@ -3,7 +3,7 @@ const app = express();
 const conexao = require('./database/basedados');
 const Usuario = require('./cont_users/Users');
 const ControleUsuario = require('./cont_users/controlUsers');
-// ao criar a tabela de banco de dados, dar um const Perfil aqui
+const Perfil = require('./cont_perfil/Perfil');
 const ControlePerfil = require('./cont_perfil/controlPerfil');
 // ao criar a tabela de banco de dados, dar um const Vehicle aqui
 const ControleVeiculo = require('./cont_veiculo/controlVeiculo');
