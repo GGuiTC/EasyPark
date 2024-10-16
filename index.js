@@ -32,7 +32,7 @@ conexao.authenticate().then(()=>{
     console.log(erroMsg);
 })
 
-app.get("/index2",adminAut, (req,res)=>{
+app.get("/dashboard",adminAut, (req,res)=>{
     res.render("index2")
 })
 

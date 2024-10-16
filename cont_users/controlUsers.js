@@ -60,7 +60,7 @@ router.post("/loga_user", (req,res)=>{
                id: usuario.id_usuario,
                login: usuario.login
                }
-                res.redirect("/index2")
+                res.redirect("/dashboard")
             }
             else{
                 res.redirect("/login_page")
