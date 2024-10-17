@@ -56,11 +56,11 @@ router.post("/loga_user", (req,res)=>{
         if(usuario != undefined){
             var correta = bcrypt.compareSync(senha, usuario.senha)
             if(correta){
-               req.session.usuario = {
-               id: usuario.id_usuario,
-               login: usuario.login
-               }
-                res.redirect("/dashboard")
+                req.session.usuario = {
+                    id: usuario.id_usuario,
+                    login: usuario.login
+                }
+                res.redirect("/dashboard");
             }
             else{
                 res.redirect("/login_page")

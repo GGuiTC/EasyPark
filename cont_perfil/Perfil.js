@@ -4,7 +4,7 @@ const conexao = require('../database/basedados');
 Perfil = conexao.define('perfil', {
     id_perfil:{
         type: Sequelize.INTEGER,
-        autoIncrement: true,
+        autoIncrement: false,
         allowNull: false,
         primaryKey: true
     },

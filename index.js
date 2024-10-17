@@ -10,7 +10,7 @@ const ControleVeiculo = require('./cont_veiculo/controlVeiculo');
 // ao criar a tabela de banco de dados, dar um const Reserv aqui
 const ControleReserva = require('./cont_reserv/controlReserva');
 const session = require('express-session');
-const adminAut = require('./middeware/adminAutoriz');
+const adminAut = require('./middleware/adminAutoriz'); /* -------- MNADA PROS BAGULHO */
 
  app.use(session({
      secret: "qualquercoisa",
@@ -33,7 +33,8 @@ conexao.authenticate().then(()=>{
 })
 
 app.get("/dashboard",adminAut, (req,res)=>{
-    res.render("index2")
+    id = req.session.usuario.id;                /* ------------- COPIA PROS BAGULHO */
+    res.render("index2", { id })
 })
 
 app.get("/",(req,res)=>{
