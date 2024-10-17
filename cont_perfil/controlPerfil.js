@@ -3,11 +3,13 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const Perfil = require('./Perfil');
 
+const adminAut = require('../middleware/adminAutoriz');
+
 router.use(bodyParser.urlencoded({extended: true}));
 
-router.get("/perfil_page", (req,res)=>{
-
-    res.render("perfil/perfil-page");
+router.get("/perfil_page",adminAut, (req,res)=>{
+    id = req.session.usuario.id;
+    res.render("perfil/perfil-page", { id });
 })
 
 router.post("/cadastra-edita-perfil", (req,res)=>{

@@ -2,10 +2,13 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 
+const adminAut = require('../middleware/adminAutoriz');
+
 router.use(bodyParser.urlencoded({extended: true}));
 
-router.get("/reserv_page", (req,res)=>{
-    res.render("reserv/reserv-page");
+router.get("/reserv_page",adminAut,(req,res)=>{
+    id = req.session.usuario.id;
+    res.render("reserv/reserv-page", { id });
 })
 
 module.exports = router;
