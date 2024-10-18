@@ -34,7 +34,6 @@ router.post("/cadastra-edita-perfil", adminAut, (req,res)=>{
     // TEM Q ARRUMAR:
     // 1 - SE O DADO NO BANCO DE DADOS E NO FORM FOR IGUAL, NÃO EDITA
     // 2 - TELA DE LOADING DEPOIS DE ATUALIZAR E DEPOIS REDIRECIONAR PARA /perfil_page
-    // 2 - OU TIRAR OS res.render DAS ATUALIZAÇÕES E PASSAR DEIXAR LA EMBAIXO
     let id_perfil = req.body.id;
     let nome = req.body.nome;
     let email = req.body.email;
@@ -44,7 +43,7 @@ router.post("/cadastra-edita-perfil", adminAut, (req,res)=>{
     let rg = req.body.rg;
     let data_nasc = req.body.data_nasc;
 
-    
+
     Perfil.findOne({
         where: {id_usuario: id_perfil}
     }).then((perfil)=>{
@@ -57,9 +56,13 @@ router.post("/cadastra-edita-perfil", adminAut, (req,res)=>{
                 cpf: cpf,
                 rg: rg,
                 data_nasc: data_nasc
-            },{where: {id_usuario: id_perfil}})
+            },
+            {
+                where: {id_usuario: id_perfil}
+            }).then((perfil)=>{
+                res.redirect("/perfil_page");// SÓ VEM O ID!!!!!!
+            })
         }
-        res.render("perfil/perfil-page", {perfil});
     })
 })
 
