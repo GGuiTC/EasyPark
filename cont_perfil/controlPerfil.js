@@ -33,7 +33,6 @@ router.get("/perfil_page",adminAut, (req,res)=>{
 router.post("/cadastra-edita-perfil", adminAut, (req,res)=>{
     // TEM Q ARRUMAR:
     // 1 - SE O DADO NO BANCO DE DADOS E NO FORM FOR IGUAL, NÃO EDITA
-    // 2 - TELA DE LOADING DEPOIS DE ATUALIZAR E DEPOIS REDIRECIONAR PARA /perfil_page
     let id_perfil = req.body.id;
     let nome = req.body.nome;
     let email = req.body.email;
@@ -59,8 +58,8 @@ router.post("/cadastra-edita-perfil", adminAut, (req,res)=>{
             },
             {
                 where: {id_usuario: id_perfil}
-            }).then((perfil)=>{
-                res.redirect("/perfil_page");// SÓ VEM O ID!!!!!!
+            }).then(()=>{
+                res.redirect("/perfil_page");
             })
         }
     })
