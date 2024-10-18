@@ -8,12 +8,43 @@ const adminAut = require('../middleware/adminAutoriz');
 router.use(bodyParser.urlencoded({extended: true}));
 
 router.get("/perfil_page",adminAut, (req,res)=>{
-    id = req.session.usuario.id;
-    res.render("perfil/perfil-page", { id });
+    let id_usuario = req.session.usuario.id;
+    let nome = req.session.usuario.nome;
+    let email = req.session.usuario.email;
+    //arruma
+    Perfil.findOne({
+        where: {id_usuario: id_usuario}
+    }).then((perfil)=>{
+        if(perfil == undefined){
+            Perfil.create({
+                id_usuario: id_usuario,
+                nome: nome,
+                email: email
+            }).then((perfil)=>{
+                res.render("perfil/perfil-page", {perfil})
+            })
+        }else{
+            res.render("perfil/perfil-page", {perfil})
+        }
+        
+        // if(perfil == undefined){
+            // Perfil.create({
+            //     id_perfil: id_perfil,
+            // }).then((perfil)=>{
+            //     res.render("perfil/perfil-page", {perfil});
+            // })
+        // }else{
+        //     Perfil.then((perfil)=>{
+        //         res.render("perfil/perfil-page", {perfil});
+        //     })
+        // }
+    })
+    //arruma
+    // res.render("perfil/perfil-page", { id, nome, email });
 })
 
 router.post("/cadastra-edita-perfil", (req,res)=>{
-    let id = req.body.id; // ->->->->->->->->->->->->->-> MUDAR
+    let id_perfil = req.body.id; // ->->->->->->->->->->->->->-> MUDAR
     let nome = req.body.nome;
     let email = req.body.email;
     let telefone = req.body.telefone;
@@ -22,42 +53,36 @@ router.post("/cadastra-edita-perfil", (req,res)=>{
     let rg = req.body.rg;
     let data_nasc = req.body.data_nasc;
 
-    
-    // Perfil.findOne({
-    //     where: {email: email}
-    // }).then((perfil)=>{
-    //     if(perfil == undefined){
-    //         Perfil.create({
-    //             nome: nome,
-    //             email: email,
-    //             telefone: telefone,
-    //             sexo: sexo,
-    //             cpf: cpf,
-    //             rg: rg,
-    //             data_nasc: data_nasc
-    //         }).then(()=>{
-    //             res.render("perfil/perfil-page");
-    //         })
-    //     }else{
-            
-    //     }
-    // })
+
     
     // --------------- NOME ---------------
-
     Perfil.findOne({
-        where: {nome: nome}
+        where: {id_perfil: id_perfil}
     }).then((perfil)=>{
         if(perfil == undefined){
             Perfil.create({
                 nome: nome
-            }).then(()=>{
-                res.render("perfil/perfil-page");
+            }).then((perfil)=>{
+                res.render("perfil/perfil-page", {perfil});
             })
         }else{
-            
+            Perfil.update({
+                nome: nome
+            }).then((perfil)=>{
+                res.render("perfil/perfil-page", {perfil});
+            })
         }
     })
+
+
+
+    // --------------- EMAIL ---------------
+    // --------------- TELEFONE ---------------
+    // --------------- SEXO ---------------
+    // --------------- CPF ---------------
+    // --------------- RG ---------------
+    // --------------- DATA_NASC ---------------
+
 
     // A Ideia é: 
     // Se estiver no banco de dados -> edita

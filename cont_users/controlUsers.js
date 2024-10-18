@@ -58,7 +58,9 @@ router.post("/loga_user", (req,res)=>{
             if(correta){
                 req.session.usuario = {
                     id: usuario.id_usuario,
-                    login: usuario.login
+                    nome: usuario.nome,
+                    email: usuario.email,
+                    nivel_usuario: usuario.nivel_usuario
                 }
                 res.redirect("/dashboard");
             }

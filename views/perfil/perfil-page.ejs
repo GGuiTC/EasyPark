@@ -62,13 +62,15 @@
                         <div class="metadinha2">
 
                             <form action="/cadastra-edita-perfil" method="post">
-                                <input class="input_inputes" type="text" name="nome" id="nome" value="Perfil de Souza Ribeiro">
+                                <input type="hidden" name="id" id="id" value="<%= perfil.id_usuario %>">
+
+                                <input class="input_inputes" type="text" name="nome" id="nome" value="<%= perfil.nome %>" required>
     
-                                <input class="input_inputes" type="text" name="email" id="email" value="perfil@email.com">
+                                <input class="input_inputes" type="text" name="email" id="email" value="<%= perfil.email %>" required>
                                 
-                                <input class="input_inputes" type="text" name="telefone" id="telefone" value="9812123456789">
+                                <input class="input_inputes" type="text" name="telefone" id="telefone" value="<%= perfil.telefone %>" required>
     
-                                <div class="radio-group">
+                                <div class="radio-group"> <!-- AQUI -->
                                     <input type="radio" id="masculino" name="sexo" value="masculino" checked>
                                     <label for="masculino">Masculino</label>
             
@@ -79,13 +81,11 @@
                                     <label for="outro">Outro</label>
                                 </div>
     
-                                <input class="input_inputes" type="text" name="cpf" id="cpf" value="12345678910">
+                                <input class="input_inputes" type="text" name="cpf" id="cpf" value="" required>
     
-                                <input class="input_inputes" type="text" name="rg" id="rg" value="1234567">
+                                <input class="input_inputes" type="text" name="rg" id="rg" value="" required>
     
-                                <input class="input_inputes" type="date" name="data_nasc" id="data_nasc" value="1980-01-01">
-
-                                <input type="hidden" name="id" id="id" value="CALMAAAAAAAAAAAAAA">
+                                <input class="input_inputes" type="date" name="data_nasc" id="data_nasc" value="" required>
     
                                 <button type="submit" class="btn_yellow btn_sw">Gravar</button>
                             </form>
