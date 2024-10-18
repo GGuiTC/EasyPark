@@ -70,7 +70,7 @@
                                 
                                 <input class="input_inputes" type="text" name="telefone" id="telefone" value="<%= perfil.telefone %>" required>
     
-                                <div class="radio-group"> <!-- AQUI -->
+                                <div class="radio-group"> <!-- ARRUMAR PARA SELECIONAR O SEXO DE ACRODO COM O BANCO DE DADOS -->
                                     <input type="radio" id="masculino" name="sexo" value="masculino" checked>
                                     <label for="masculino">Masculino</label>
             
@@ -81,11 +81,11 @@
                                     <label for="outro">Outro</label>
                                 </div>
     
-                                <input class="input_inputes" type="text" name="cpf" id="cpf" value="" required>
+                                <input class="input_inputes" type="text" name="cpf" id="cpf" value="<%= perfil.cpf %>" required>
     
-                                <input class="input_inputes" type="text" name="rg" id="rg" value="" required>
+                                <input class="input_inputes" type="text" name="rg" id="rg" value="<%= perfil.rg %>" required>
     
-                                <input class="input_inputes" type="date" name="data_nasc" id="data_nasc" value="" required>
+                                <input class="input_inputes" type="date" name="data_nasc" id="data_nasc" value="<%= perfil.data_nasc %>" required>
     
                                 <button type="submit" class="btn_yellow btn_sw">Gravar</button>
                             </form>
