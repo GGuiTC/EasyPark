@@ -26,25 +26,12 @@ router.get("/perfil_page",adminAut, (req,res)=>{
         }else{
             res.render("perfil/perfil-page", {perfil})
         }
-        
-        // if(perfil == undefined){
-            // Perfil.create({
-            //     id_perfil: id_perfil,
-            // }).then((perfil)=>{
-            //     res.render("perfil/perfil-page", {perfil});
-            // })
-        // }else{
-        //     Perfil.then((perfil)=>{
-        //         res.render("perfil/perfil-page", {perfil});
-        //     })
-        // }
+    
     })
-    //arruma
-    // res.render("perfil/perfil-page", { id, nome, email });
 })
 
 router.post("/cadastra-edita-perfil", (req,res)=>{
-    let id_perfil = req.body.id; // ->->->->->->->->->->->->->-> MUDAR
+    let id_perfil = req.body.id;
     let nome = req.body.nome;
     let email = req.body.email;
     let telefone = req.body.telefone;
