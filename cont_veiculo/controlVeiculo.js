@@ -8,12 +8,36 @@ const adminAut = require('../middleware/adminAutoriz');
 router.use(bodyParser.urlencoded({extended: true}));
 
 router.get("/vehicle_page", adminAut, (req,res)=>{
-    id = req.session.usuario.id;
-    res.render("vehicles/vehicles-page", { id });
+    id_usuario = req.session.usuario.id;
+    Veiculo.findAll({
+        where: {id_usuario: id_usuario}
+    }).then((veiculo)=>{
+        res.render("vehicles/vehicles-page", { veiculo });
+    })
 })
 
-router.get("/cadastro-veiculos", (req,res)=>{
-    res.render("vehicles/cadastro-vehicles");
+router.get("/cadastro-veiculos", adminAut, (req,res)=>{
+    id_usuario = req.session.usuario.id;
+    res.render("vehicles/cadastro-vehicles", {id_usuario});
+})
+
+router.post("/cadastro_veiculo", (req,res)=>{
+    let id_usuario = req.body.id
+    let tipo_veiculo = req.body.tipo
+    let marca = req.body.marca
+    let modelo = req.body.modelo
+    let cor = req.body.cor
+    let placa = req.body.placa
+    Veiculo.create({
+        id_usuario: id_usuario,
+        tipo_veiculo: tipo_veiculo,
+        marca: marca,
+        modelo: modelo,
+        cor: cor,
+        placa: placa
+    }).then(()=>{
+        res.redirect("/vehicle_page")
+    })
 })
 
 module.exports = router;

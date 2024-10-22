@@ -9,13 +9,13 @@
                 <div class="title-align">
                     <h2>Cadastro de veículos</h2>
                 </div>
-                <form action="/cadastro_veiculo">
+                <form action="/cadastro_veiculo" method="post">
                     <div class="inputes">
                         <label>Tipo</label>
                         <select name="tipo" id="tipo" class="input_inputes" required>
                             <option value="carro">Carro</option>
                             <option value="moto">Moto</option>
-                            <option value="caminhão">Caminhão</option>
+                            <option value="caminhao">Caminhão</option>
                             <option value="van">Van</option>
                             <option value="motorhome">Motorhome</option>
                         </select>
@@ -36,6 +36,7 @@
                         <label>Placa</label>
                         <input type="text" name="placa" id="placa" class="input_inputes" placeholder="Digite aqui" required>
                     </div>
+                    <input type="hidden" name="id" id="id" value="<%= id %>">
                     <div class="justify-center">
                         <button type="submit" class="btn_yellow">Adicionar</button>
                     </div>

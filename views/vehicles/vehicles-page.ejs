@@ -41,34 +41,25 @@
                                 </tr> 
                             </thead>
                             <tbody>
+
+                                <% veiculo.forEach((veicu)=>{ %>
                                 <tr>
-                                    <td>Carro</td>
-                                    <td>Mitsubishi</td>
-                                    <td>Lancer</td>
-                                    <td>Prata</td>
-                                    <td>ABC1D23</td>
+                                    <td><%= veicu.tipo_veiculo %></td>
+                                    <td><%= veicu.marca %></td>
+                                    <td><%= veicu.modelo %></td>
+                                    <td><%= veicu.cor %></td>
+                                    <td><%= veicu.placa %></td>
                                     <td>
-                                        <a href="edita-vehicle/id-veiculo-com-ejs" class="btn btn-warning">Editar</a> <!-- com certeza vai dar erro -->
+                                        <a href="edita-vehicle/<%= veicu.id_veiculo %>" class="btn btn-warning">Editar</a> <!-- com certeza vai dar erro -->
+
                                         <form method="POST" action="deleta-vehicle" style="display: inline" onsubmit="confirmaDeleta(event,this)"> <!-- com certeza vai dar erro -->
-                                            <input type="hidden" name="id" value="id-veiculo-com-ejs" /> 
+                                            <input type="hidden" name="id" value="<%= veicu.id_veiculo %>" /> 
                                             <button class="btn btn-danger">Deletar</button> 
                                         </form>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Moto</td>
-                                    <td>Honda</td>
-                                    <td>Sahara</td>
-                                    <td>Vermelho</td>
-                                    <td>EFG3H45</td>
-                                    <td>
-                                        <a href="edita-vehicle/id-veiculo-com-ejs" class="btn btn-warning">Editar</a> <!-- com certeza vai dar erro -->
-                                        <form method="POST" action="deleta-vehicle" style="display: inline" onsubmit="confirmaDeleta(event,this)"> <!-- com certeza vai dar erro -->
-                                            <input type="hidden" name="id" value="id-veiculo-com-ejs" /> 
-                                            <button class="btn btn-danger">Deletar</button> 
-                                        </form>
-                                    </td>
-                                </tr>
+                                <% }) %>
+
                             </tbody>
                         </table>
 
@@ -83,12 +74,12 @@
 
 </body>
 <%- include ("../partials/footer.ejs") %>
-<!-- <script>
+<script>
     function confirmaDeleta(event,formulario){
        event.preventDefault();
-       decisao = confirm("Confirma exclusão??")        --------------- PRO USUÁRIO TER CERTEZA SE VAI OU NÃO EXCLUIR ---------------
+       decisao = confirm("Confirma exclusão??")
        if(decisao){
           formulario.submit();
        }
     }
- </script> -->
+ </script>
