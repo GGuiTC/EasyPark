@@ -6,19 +6,21 @@ const adminAut = require('../middleware/adminAutoriz');
 
 router.use(bodyParser.urlencoded({extended: true}));
 
-router.get("/reserv_page",adminAut,(req,res)=>{
-    id = req.session.usuario.id;
-    res.render("reserv/reserv-page", { id });
+router.get("/park_page", adminAut, (req,res)=>{
+    res.render("park/park-page");
 })
 
 module.exports = router;
+
+
+
+
 
 
 // const express = require('express');
 // const router = express.Router();
 // const bodyParser = require('body-parser');
 // const adminAut = require('../middleware/adminAutoriz');
-
 
 // router.use(bodyParser.urlencoded({extended: true}));     ------------------THIS IS THE BASIC------------------
 

@@ -85,6 +85,7 @@ module.exports = router;
 // const express = require('express');
 // const router = express.Router();
 // const bodyParser = require('body-parser');
+// const adminAut = require('../middleware/adminAutoriz');
 
 // router.use(bodyParser.urlencoded({extended: true}));     ------------------THIS IS THE BASIC------------------
 
