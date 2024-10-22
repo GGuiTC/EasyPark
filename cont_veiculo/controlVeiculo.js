@@ -40,6 +40,45 @@ router.post("/cadastro_veiculo", (req,res)=>{
     })
 })
 
+router.post("/deleta-vehicle", (req, res)=>{
+    var id = req.body.id;
+    Veiculo.destroy({
+        where:{
+            id_veiculo:id
+        }
+    }).then(()=>{
+        res.redirect("/vehicle_page")
+    })
+})
+
+router.get("/edita-vehicle/:id", adminAut, (req,res)=>{
+    let id = req.params.id;
+    Veiculo.findByPk(id).then((veiculo)=>{
+        res.render("vehicles/alte_vehicle", {veiculo})
+    })
+})
+
+router.post("/updateveiculo",(req, res)=>{
+    id_veiculo = req.body.id;
+    tipo = req.body.tipo
+    marca = req.body.marca
+    modelo = req.body.modelo
+    cor = req.body.cor
+    placa = req.body.placa
+    Veiculo.update(
+        {
+            tipo_veiculo: tipo,
+            marca: marca,
+            modelo: modelo,
+            cor: cor,
+            placa: placa
+        }, 
+        {where:{id_veiculo :id_veiculo}}
+    ).then(()=>{
+        res.redirect("/vehicle_page")
+    })
+})
+
 module.exports = router;
 
 

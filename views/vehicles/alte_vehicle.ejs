@@ -1,0 +1,48 @@
+<%- include ("../partials/header.ejs") %>
+<link rel="stylesheet" href="/css2/cadastro-vehicles.css">
+</head>
+<%- include ("../partials/navbar3.ejs") %>
+<body>
+    <div class="tetudo justify-center">
+        <div class="container">
+            <div class="meu-perfil">
+                <div class="title-align">
+                    <h2>Edição de veículos</h2>
+                </div>
+                <form action="/updateveiculo" method="post"> <!-- mudar rota aqui -->
+                    <div class="inputes">
+                        <label>Tipo</label>
+                        <select name="tipo" id="tipo" class="input_inputes" required>
+                            <option value="carro" <%= (veiculo.tipo_veiculo === 'carro') ? 'selected' : '' %> >Carro</option>
+                            <option value="moto" <%= (veiculo.tipo_veiculo === 'moto') ? 'selected' : '' %> >Moto</option>
+                            <option value="caminhao" <%= (veiculo.tipo_veiculo === 'caminhao') ? 'selected' : '' %> >Caminhão</option>
+                            <option value="van" <%= (veiculo.tipo_veiculo === 'van') ? 'selected' : '' %> >Van</option>
+                            <option value="motorhome" <%= (veiculo.tipo_veiculo === 'motorhome') ? 'selected' : '' %> >Motorhome</option>
+                        </select>
+                    </div>
+                    <div class="inputes">
+                        <label>Marca</label>
+                        <input type="text" name="marca" id="marca" class="input_inputes" value="<%= veiculo.marca %>" required>
+                    </div>
+                    <div class="inputes">
+                        <label>Modelo</label>
+                        <input type="text" name="modelo" id="modelo" class="input_inputes" value="<%= veiculo.modelo %>" required>
+                    </div>
+                    <div class="inputes">
+                        <label>Cor</label>
+                        <input type="text" name="cor" id="cor" class="input_inputes" value="<%= veiculo.cor %>" required>
+                    </div>
+                    <div class="inputes">
+                        <label>Placa</label>
+                        <input type="text" name="placa" id="placa" class="input_inputes" value="<%= veiculo.placa %>" required>
+                    </div>
+                    <input type="hidden" name="id" id="id" value="<%= veiculo.id_veiculo %>">
+                    <div class="justify-center">
+                        <button type="submit" class="btn_yellow">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include ("../partials/footer.ejs") %>
