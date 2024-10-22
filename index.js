@@ -5,7 +5,7 @@ const Usuario = require('./cont_users/Users');
 const ControleUsuario = require('./cont_users/controlUsers');
 const Perfil = require('./cont_perfil/Perfil');
 const ControlePerfil = require('./cont_perfil/controlPerfil');
-// ao criar a tabela de banco de dados, dar um const Vehicle aqui
+const Veiculo = require('./cont_veiculo/Vehicles');
 const ControleVeiculo = require('./cont_veiculo/controlVeiculo');
 // ao criar a tabela de banco de dados, dar um const Reserv aqui
 const ControleReserva = require('./cont_reserv/controlReserva');
