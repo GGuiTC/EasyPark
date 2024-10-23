@@ -1,13 +1,22 @@
+h1, h2, h3, h4, h5, h6{
+    color: white;
+}
+a{
+    text-decoration: none !important;
+}
 .tetudo{
     background-color: var(--dark-gray);
+    flex-direction: column;
 }
 .mapa{
     display: flex;
+    flex-wrap: wrap;
     height: 90%;
     width: 90%;
 }
 .vaga{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100px;
@@ -21,7 +30,10 @@
     /* background-color: var(--especial-color); */
     border-color: var(--especial-color);
 }
-.especial-vaga img{
+.ocupado{
+    border-color: var(--ocupado-color);
+}
+.vaga img{
     height: 50px;
     border-radius: 5px;
     border-style: solid;
@@ -37,7 +49,4 @@
     border-style: solid;
     border-width: 10px;
     border-bottom: none;
-}
-.vaga h1{
-    color: white;
 }

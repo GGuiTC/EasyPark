@@ -24,7 +24,7 @@ Vaga = conexao.define('vaga', {
         type: Sequelize.TEXT,
         allowNull: true,
     },
-    preço:{
+    preco:{
         type: Sequelize.FLOAT,
         allowNull: true,
     },
