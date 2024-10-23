@@ -2,15 +2,11 @@ const Sequelize = require("sequelize");
 const conexao = require('../database/basedados');
 
 Perfil = conexao.define('perfil', {
-    id_perfil_id:{
+    id_perfil:{
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
-    },
-    id_usuario:{
-        type: Sequelize.INTEGER,
-        allowNull: true
     },
     nome:{
         type: Sequelize.STRING,
@@ -39,7 +35,11 @@ Perfil = conexao.define('perfil', {
     data_nasc:{
         type: Sequelize.DATEONLY,
         allowNull: true,
-    }
+    },
+    id_usuario:{
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
 });
 
 module.exports = Perfil;

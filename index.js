@@ -7,8 +7,8 @@ const Perfil = require('./cont_perfil/Perfil');
 const ControlePerfil = require('./cont_perfil/controlPerfil');
 const Veiculo = require('./cont_veiculo/Vehicles');
 const ControleVeiculo = require('./cont_veiculo/controlVeiculo');
-// ao criar a tabela de banco de dados, dar um const Park aqui
-const ControleEstacionamento = require('./cont_park/controlPark');
+const Vaga = require('./cont_park/Park');
+const ControleVaga = require('./cont_park/controlPark');
 // ao criar a tabela de banco de dados, dar um const Reserv aqui
 const ControleReserva = require('./cont_reserv/controlReserva');
 const session = require('express-session');
@@ -23,7 +23,7 @@ const adminAut = require('./middleware/adminAutoriz'); /* -------- MNADA PROS BA
 app.use("/", ControleUsuario);
 app.use("/", ControlePerfil);
 app.use("/", ControleVeiculo);
-app.use("/", ControleEstacionamento);
+app.use("/", ControleVaga);
 app.use("/", ControleReserva);
 
 app.set("view engine","ejs");
