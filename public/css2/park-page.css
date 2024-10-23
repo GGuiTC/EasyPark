@@ -1,0 +1,43 @@
+.tetudo{
+    background-color: var(--dark-gray);
+}
+.mapa{
+    display: flex;
+    height: 90%;
+    width: 90%;
+}
+.vaga{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 100px;
+    margin: 20px;
+}
+.normal-vaga{
+    border-color: var(--terciary-color);
+}
+.especial-vaga{
+    /* background-color: var(--especial-color); */
+    border-color: var(--especial-color);
+}
+.especial-vaga img{
+    height: 50px;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 8px;
+    border-color: var(--especial-color);
+}
+.border-top-none{
+    border-style: solid;
+    border-width: 10px;
+    border-top: none;
+}
+.border-bottom-none{
+    border-style: solid;
+    border-width: 10px;
+    border-bottom: none;
+}
+.vaga h1{
+    color: white;
+}
