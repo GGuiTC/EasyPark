@@ -8,6 +8,14 @@ a{
     background-color: var(--dark-gray);
     flex-direction: column;
 }
+.date{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.date input{
+    margin-right: 30px;
+}
 .mapa{
     display: flex;
     flex-wrap: wrap;
