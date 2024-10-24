@@ -9,7 +9,7 @@ const Veiculo = require('./cont_veiculo/Vehicles');
 const ControleVeiculo = require('./cont_veiculo/controlVeiculo');
 const Vaga = require('./cont_park/Park');
 const ControleVaga = require('./cont_park/controlPark');
-// ao criar a tabela de banco de dados, dar um const Reserv aqui
+const Reserva = require('./cont_reserv/Reserva');
 const ControleReserva = require('./cont_reserv/controlReserva');
 const session = require('express-session');
 const adminAut = require('./middleware/adminAutoriz'); /* -------- MNADA PROS BAGULHO */
