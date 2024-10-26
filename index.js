@@ -44,6 +44,9 @@ app.get("/",(req,res)=>{
     res.render("index");
 })
 
+app.get("/data_page", (req, res)=>{
+    res.render("data-page");
+})
 
 
 

@@ -1,5 +1,5 @@
 h1, h2, h3, h4, h5, h6{
-    color: white;
+    color: var(--primary-color);
 }
 a{
     text-decoration: none !important;
@@ -32,7 +32,7 @@ a{
     margin: 20px;
 }
 .normal-vaga{
-    border-color: var(--terciary-color);
+    border-color: var(--vazio-color);
 }
 .especial-vaga{
     /* background-color: var(--especial-color); */
