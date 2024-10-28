@@ -13,7 +13,7 @@ Vaga = conexao.define('vaga', {
         allowNull: true,
     },
     status_vaga:{
-        type: Sequelize.ENUM('vazio', 'reservado'),
+        type: Sequelize.ENUM('vazio', 'reservado'), //tirar eu acho
         allowNull: true,
     },
     tipo_vaga: {
