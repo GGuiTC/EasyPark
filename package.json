@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "node --watch index.js"
   },
   "author": "Guilherme e Mateus Boaroli",
