@@ -13,7 +13,7 @@ const Reserva = require('./cont_reserv/Reserva');
 const ControleReserva = require('./cont_reserv/controlReserva');
 const session = require('express-session');
 const adminAut = require('./middleware/adminAutoriz'); /* -------- MNADA PROS BAGULHO */
-
+// teste
  app.use(session({
      secret: "qualquercoisa",
     resave: "false",
