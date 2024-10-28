@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
-const Vaga = require('./Park');
+const Vaga = require('./Park')
 
 const adminAut = require('../middleware/adminAutoriz');
 
