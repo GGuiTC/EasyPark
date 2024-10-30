@@ -13,6 +13,7 @@ const Reserva = require('./cont_reserv/Reserva');
 const ControleReserva = require('./cont_reserv/controlReserva');
 const session = require('express-session');
 const adminAut = require('./middleware/adminAutoriz'); /* -------- MNADA PROS BAGULHO */
+const { where } = require('sequelize');
 // teste
  app.use(session({
      secret: "qualquercoisa",
@@ -50,6 +51,90 @@ app.get("/data_page", (req, res)=>{
 
 
 
+
+app.post("/reserva_vaga", (req, res) => {
+    let date = req.body.date;
+    let time = req.body.time;
+    let vagasStatus = []; // Array para armazenar o status de cada vaga
+
+    // Busca todas as vagas em ordem crescente de id_vaga
+    Vaga.findAll({
+        order: [['id_vaga', 'ASC']]
+    }).then((vagas) => {
+        const promises = vagas.map((vaga) => {
+            return Reserva.findOne({
+                where: {
+                    data_reserva: date,
+                    prev_chegada: time,
+                    id_vaga: vaga.id_vaga
+                }
+            }).then((reserva) => {
+                vagasStatus.push({
+                    id_vaga: vaga.id_vaga,
+                    tipo_vaga: vaga.tipo_vaga,
+                    numero: vaga.numero,
+                    status: reserva ? "ocupado" : "vazio"
+                });
+            });
+        });
+
+        // Aguarda todas as Promises antes de renderizar a página
+        Promise.all(promises).then(() => {
+            // Ordena o array vagasStatus por id_vaga, para garantir a ordem correta
+            vagasStatus.sort((a, b) => a.id_vaga - b.id_vaga);
+
+            res.render("park/park-page", { vagasStatus });
+        }).catch((error) => {
+            console.error("Erro ao buscar status das reservas:", error);
+            res.status(500).send("Erro ao processar os dados.");
+        });
+    }).catch((error) => {
+        console.error("Erro ao buscar vagas:", error);
+        res.status(500).send("Erro ao buscar as vagas.");
+    });
+});
+
+
+
+
+
+// app.post("/reserva_vaga", (req, res) => {
+//     let date = req.body.date;
+//     let time = req.body.time;
+//     let vagasStatus = []; // Array para armazenar o status de cada vaga
+
+//     Vaga.findAll().then((vagas) => {
+//         // Array de Promises para garantir que todas as consultas de reserva sejam concluídas antes de enviar a resposta
+//         const promises = vagas.map((vaga) => {
+//             return Reserva.findOne({
+//                 where: {
+//                     data_reserva: date,
+//                     prev_chegada: time,
+//                     id_vaga: vaga.id_vaga
+//                 }
+//             }).then((reserva) => {
+//                 // Verifica se a vaga está ocupada ou vazia e adiciona o status ao array
+//                 vagasStatus.push({
+//                     id_vaga: vaga.id_vaga,
+//                     tipo_vaga: vaga.tipo_vaga, // Inclui o tipo da vaga
+//                     numero: vaga.numero,
+//                     status: reserva ? "ocupado" : "vazio" // Define o status da vaga
+//                 });
+//             });
+//         });
+
+//         // Aguarda todas as Promises antes de renderizar a página
+//         Promise.all(promises).then(() => {
+//             res.render("park/park-page", { vagasStatus });
+//         }).catch((error) => {
+//             console.error("Erro ao buscar status das reservas:", error);
+//             res.status(500).send("Erro ao processar os dados.");
+//         });
+//     }).catch((error) => {
+//         console.error("Erro ao buscar vagas:", error);
+//         res.status(500).send("Erro ao buscar as vagas.");
+//     });
+// });
 
 
 

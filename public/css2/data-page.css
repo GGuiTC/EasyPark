@@ -31,12 +31,12 @@
     color: var(--primary-color);
     margin: 20px 0;
 }
-.div-header div{
+.div-header form{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.div-header div input{
+.div-header form input{
     background-color: transparent;
     color: white;
 
