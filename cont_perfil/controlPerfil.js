@@ -10,7 +10,7 @@ router.use(bodyParser.urlencoded({extended: true}));
 
 router.get("/perfil_page",adminAut, (req,res)=>{
     let id_usuario = req.session.usuario.id;
-    let nome = req.session.usuario.nome;
+    nome = req.session.usuario.nome;
     let email = req.session.usuario.email;
     Perfil.findOne({
         where: {id_usuario: id_usuario}
@@ -21,10 +21,10 @@ router.get("/perfil_page",adminAut, (req,res)=>{
                 nome: nome,
                 email: email
             }).then((perfil)=>{
-                res.render("perfil/perfil-page", {perfil})
+                res.render("perfil/perfil-page", {perfil, nome})
             })
         }else{
-            res.render("perfil/perfil-page", {perfil})
+            res.render("perfil/perfil-page", {perfil, nome})
         }
     
     })

@@ -7,7 +7,16 @@
     <div class="tetudo">
         <div class="metade1">
             <div class="menu-perfil">
-                <%- include ("../partials/box-parts/nomePerfil.ejs") %> <!-- foto de perfil, nome de usuário e nome -->
+
+                <div class="nome-perfil">
+                    <div class="img-container">
+                        <img class="perfil-photo" src="/img/icons8-male-user-preto.png" alt="">
+                    </div>
+                    <div class="nomes">
+                        <h5><%= nome %></h5>
+                    </div>
+                </div>
+                
                 <div class="menu">
                     <ul>
                         <li><a href="/perfil_page">Meu Perfil</a></li>
