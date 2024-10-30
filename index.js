@@ -94,50 +94,6 @@ app.post("/reserva_vaga", (req, res) => {
     });
 });
 
-
-
-
-
-// app.post("/reserva_vaga", (req, res) => {
-//     let date = req.body.date;
-//     let time = req.body.time;
-//     let vagasStatus = []; // Array para armazenar o status de cada vaga
-
-//     Vaga.findAll().then((vagas) => {
-//         // Array de Promises para garantir que todas as consultas de reserva sejam concluídas antes de enviar a resposta
-//         const promises = vagas.map((vaga) => {
-//             return Reserva.findOne({
-//                 where: {
-//                     data_reserva: date,
-//                     prev_chegada: time,
-//                     id_vaga: vaga.id_vaga
-//                 }
-//             }).then((reserva) => {
-//                 // Verifica se a vaga está ocupada ou vazia e adiciona o status ao array
-//                 vagasStatus.push({
-//                     id_vaga: vaga.id_vaga,
-//                     tipo_vaga: vaga.tipo_vaga, // Inclui o tipo da vaga
-//                     numero: vaga.numero,
-//                     status: reserva ? "ocupado" : "vazio" // Define o status da vaga
-//                 });
-//             });
-//         });
-
-//         // Aguarda todas as Promises antes de renderizar a página
-//         Promise.all(promises).then(() => {
-//             res.render("park/park-page", { vagasStatus });
-//         }).catch((error) => {
-//             console.error("Erro ao buscar status das reservas:", error);
-//             res.status(500).send("Erro ao processar os dados.");
-//         });
-//     }).catch((error) => {
-//         console.error("Erro ao buscar vagas:", error);
-//         res.status(500).send("Erro ao buscar as vagas.");
-//     });
-// });
-
-
-
 app.listen(3000,()=>{
     console.log("SERVIDOR RODANDO");
 })
