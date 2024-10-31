@@ -36,49 +36,29 @@
                     </div>
 
                     <div class="reserv-list">
-                        <div class="reserv">
-                            <div class="day">
-                                <div class="yellow-bar"></div>
+                        <!-- SIM é TUDO ISSO -->
 
-                                <div class="special-day">
-                                    <p>seg</p>
-                                    <h3><strong>16</strong></h3>
-                                    <p>13:15</p>
+                        <% reservas.forEach((reserva) => { %>
+                            <div class="reserv">
+                                <div class="day">
+                                    <div class="yellow-bar"></div>
+                                    <div class="special-day">
+                                        <p><%= new Date(reserva.data_reserva).toLocaleString('pt-BR', { weekday: 'short' }) %></p>
+                                        <h3><strong><%= new Date(reserva.data_reserva).getDate() %></strong></h3>
+                                        <p><%= new Date(`1970-01-01T${reserva.prev_chegada}`).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) %></p>
+                                    </div>
+                                    <div class="line"></div>
                                 </div>
-
-                                <div class="line"></div>
-                            </div>
-                            <div class="reserv-content">
-                                <h3><strong>Vaga 25</strong></h3>
-                                <p>Veículo - <strong>Mitsubishi Lancer Prata</strong></p>
-                                <p>Placa - <strong>ABC1D23</strong></p>
-                            </div>
-                            <div class="cancel-button">
-                                <a href="/cancel-reserv">Cancelar</a>
-                            </div>
-                        </div>
-
-                        <div class="reserv">
-                            <div class="day">
-                                <div class="yellow-bar"></div>
-
-                                <div class="special-day">
-                                    <p>seg</p>
-                                    <h3><strong>23</strong></h3>
-                                    <p>13:15</p>
+                                <div class="reserv-content">
+                                    <h3><strong>Vaga <%= reserva.vaga.numero %></strong></h3>
+                                    <p>Veículo - <strong><%= reserva.veiculo.marca %> <%= reserva.veiculo.modelo %> <%= reserva.veiculo.cor %></strong></p>
+                                    <p>Placa - <strong><%= reserva.veiculo.placa %><!-- botei as aqui --></strong></p>
                                 </div>
-
-                                <div class="line"></div>
+                                <div class="cancel-button">
+                                    <a href="/cancel-reserv">Cancelar</a>
+                                </div>
                             </div>
-                            <div class="reserv-content">
-                                <h3><strong>Vaga 32</strong></h3>
-                                <p>Veículo - <strong>Honda Sahara Vermelho</strong></p>
-                                <p>Placa - <strong>EFG3H45</strong></p>
-                            </div>
-                            <div class="cancel-button">
-                                <a href="/cancel-reserv">Cancelar</a>
-                            </div>
-                        </div>
+                        <% }) %>
                     </div>
 
                 </div>
