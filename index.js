@@ -45,14 +45,11 @@ app.get("/",(req,res)=>{
     res.render("index");
 })
 
-app.get("/data_page", (req, res)=>{
+app.get("/data_page",adminAut, (req, res)=>{
     res.render("data-page");
 })
 
-
-
-
-app.post("/reserva_vaga", (req, res) => {
+app.post("/reserva_vaga",adminAut, (req, res) => {
     let date = req.body.date;
     let time = req.body.time;
     let vagasStatus = []; // Array para armazenar o status de cada vaga
@@ -91,6 +88,17 @@ app.post("/reserva_vaga", (req, res) => {
     }).catch((error) => {
         console.error("Erro ao buscar vagas:", error);
         res.status(500).send("Erro ao buscar as vagas.");
+    });
+});
+
+app.get("/logout", (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error("Erro ao encerrar a sessão:", err);
+            res.status(500).send("Erro ao fazer logout.");
+        } else {
+            res.redirect('/login_page'); // Redireciona para a página de login após o logout
+        }
     });
 });
 

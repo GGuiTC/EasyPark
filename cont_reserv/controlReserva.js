@@ -36,7 +36,7 @@ router.get("/reserv_page", adminAut, (req, res) => {
     });
 });
 
-router.get("/reserva_vaga/:id", (req, res)=>{
+router.get("/reserva_vaga/:id", adminAut, (req, res)=>{
     id_vaga = req.params.id;
     res.render("reserv/reserva-vaga", { id_vaga })
 })
