@@ -8,11 +8,12 @@ const adminAut = require('../middleware/adminAutoriz');
 router.use(bodyParser.urlencoded({extended: true}));
 
 router.get("/vehicle_page", adminAut, (req,res)=>{
-    id_usuario = req.session.usuario.id;
+    let id_usuario = req.session.usuario.id;
+    let nome = req.session.usuario.nome;
     Veiculo.findAll({
         where: {id_usuario: id_usuario}
     }).then((veiculo)=>{
-        res.render("vehicles/vehicles-page", { veiculo });
+        res.render("vehicles/vehicles-page", { veiculo, nome });
     })
 })
 

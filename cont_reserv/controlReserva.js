@@ -14,6 +14,7 @@ router.use(bodyParser.urlencoded({extended: true}));
 
 router.get("/reserv_page", adminAut, (req, res) => {
     const id = req.session.usuario.id;
+    let nome = req.session.usuario.nome;
 
     Perfil.findOne({
         where: { id_usuario: id }
@@ -27,7 +28,7 @@ router.get("/reserv_page", adminAut, (req, res) => {
                 { model: Veiculo, as:'veiculo', attributes: ['marca', 'modelo', 'cor', 'placa'] }
             ]
         }).then((reservas) => {
-            res.render("reserv/reserv-page", { reservas, id });
+            res.render("reserv/reserv-page", { reservas, id, nome });
         }).catch((error) => {
             console.error("Erro ao buscar reservas:", error);
             res.status(500).send("Erro ao buscar reservas.");
