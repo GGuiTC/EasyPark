@@ -48,5 +48,9 @@
     width: 15%;
 }
 .cancel-button a{
-    color: red;
+    color: #ff0000;
+}
+.cancel-button a:hover{
+    transition: 300ms;
+    color: #b80000;
 }

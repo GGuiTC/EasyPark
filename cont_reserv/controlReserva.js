@@ -80,12 +80,12 @@ router.post("/reserva_vaga",adminAut, (req, res) => {
     });
 });
 
-router.get("/reserva_vaga/:id/:numero/:date/:time", adminAut, (req, res)=>{
+router.get("/reserva_vaga", adminAut, (req, res)=>{
     const id = req.session.usuario.id;
-    let id_vaga = req.params.id;
-    let numero = req.params.numero;
-    let date = req.params.date;
-    let time = req.params.time;
+    let id_vaga = req.query.id_vaga;
+    let numero = req.query.numero;
+    let date = req.query.date;
+    let time = req.query.time;
     Perfil.findOne({
         where: {
             id_usuario: id
@@ -117,7 +117,25 @@ router.post("/cadastro_reserva", (req,res)=>{
     }).then(()=>{
         res.redirect("/reserv_page")
     })
-})
+});
+
+router.get("/cancel-reserv", adminAut, (req, res) => {
+    let id_reserva = req.query.id_reserva; // Obtém o parâmetro id_reserva do link
+
+    if (!id_reserva) {
+        return res.status(400).send("Reserva não especificada.");
+    }
+
+    Reserva.destroy({
+        where: { id_reserva: id_reserva }
+    }).then(() => {
+        res.redirect("/reserv_page"); // Redireciona o usuário para a página de reservas após o cancelamento
+    }).catch((error) => {
+        console.error("Erro ao cancelar a reserva:", error);
+        res.status(500).send("Erro ao cancelar a reserva.");
+    });
+});
+
 
 module.exports = router;
 

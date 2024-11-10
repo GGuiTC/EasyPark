@@ -59,9 +59,9 @@
                                     <td><%= veicu.cor %></td>
                                     <td><%= veicu.placa %></td>
                                     <td>
-                                        <a href="edita-vehicle/<%= veicu.id_veiculo %>" class="btn btn-warning">Editar</a> <!-- com certeza vai dar erro -->
+                                        <a href="edita-vehicle/<%= veicu.id_veiculo %>" class="btn btn-warning">Editar</a>
 
-                                        <form method="POST" action="deleta-vehicle" style="display: inline" onsubmit="confirmaDeleta(event,this)"> <!-- com certeza vai dar erro -->
+                                        <form method="POST" action="deleta-vehicle" style="display: inline" onsubmit="confirmaDeleta(event,this)">
                                             <input type="hidden" name="id" value="<%= veicu.id_veiculo %>" /> 
                                             <button class="btn btn-danger">Deletar</button> 
                                         </form>

@@ -64,7 +64,8 @@
                                     <p>Placa - <strong><%= reserva.veiculo.placa %></strong></p> <!-- Placa do carro -->
                                 </div>
                                 <div class="cancel-button">
-                                    <a href="/cancel-reserv">Cancelar</a>
+                                    <!-- Adiciona evento de confirmação ao clicar no link -->
+                                    <a href="/cancel-reserv?id_reserva=<%= reserva.id_reserva %>" onclick="return confirmCancel()">Cancelar</a>
                                 </div>
                             </div>
                         <% }) %>                        
@@ -77,3 +78,8 @@
     </div>
 </body>
 <%- include ("../partials/footer.ejs") %>
+<script>
+    function confirmCancel() {
+        return confirm("Tem certeza de que deseja cancelar esta reserva?");
+    }
+</script>
