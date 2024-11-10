@@ -9,8 +9,12 @@
             <div class="div-header">
                 <h2>Data do Agendamento</h2>
                 <form action="/reserva_vaga" method="post">
-                    <input type="date" name="date" id="date" class="input_inputes">
-                    <input type="time" name="time" id="time" class="input_inputes">
+                    <label for="date">Insira a data de sua preferencia:</label>
+                    <input type="date" name="date" id="date" class="input_inputes" required>
+
+                    <label for="date">Insira o horário de sua preferencia:</label>
+                    <input type="time" name="time" id="time" class="input_inputes" required>
+
                     <button type="submit" class="btn_yellow">Ver vagas</button>
                 </form>
             </div>

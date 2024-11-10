@@ -1,3 +1,9 @@
+label{
+    place-self: flex-start;
+}
+input, label{
+    color: white;
+}
 .background-overlay{
     position: fixed;
     top: 0;
@@ -38,7 +44,6 @@
 }
 .div-header form input{
     background-color: transparent;
-    color: white;
 
     width: 700px;
     height: 60px;

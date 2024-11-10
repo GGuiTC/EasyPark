@@ -19,8 +19,6 @@ a{
 .mapa{
     display: flex;
     flex-wrap: wrap;
-    height: 90%;
-    width: 90%;
 }
 .vaga{
     display: flex;
@@ -38,8 +36,8 @@ a{
     /* background-color: var(--especial-color); */
     border-color: var(--especial-color);
 }
-.ocupado{
-    border-color: var(--ocupado-color);
+.reservado{
+    border-color: var(--terciary-color);
 }
 .vaga img{
     height: 50px;

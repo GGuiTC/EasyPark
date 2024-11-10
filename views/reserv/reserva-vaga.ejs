@@ -1,8 +1,35 @@
 <%- include ("../partials/header.ejs") %>
+<link rel="stylesheet" href="/css2/reserva-vaga.css">
 </head>
 <%- include ("../partials/navbar3.ejs") %>
 <body>
-    <h1>RESERVA VAGAAA</h1><br>
-    <h1><%= id_vaga %></h1>
+    <div class="tetudo justify-center">
+        <div class="margin">
+
+            <div class="vaga">
+                <h1>Vaga <%= numero %></h1><br>
+                <form action="/cadastro_reserva" method="post" class="margin30 form-reserva">
+                    <input type="hidden" name="vaga" id="vaga" value="<%= id_vaga %>">
+                    <input type="hidden" name="perfil" id="perfil" value="<%= perfil.id_perfil %>">
+
+                    <label for="date">Data da Reserva:</label>
+                    <input type="date" name="date" id="date" value="<%= date %>" class="input_inputes" readonly>
+
+                    <label for="time">Horário da reserva:</label>
+                    <input type="time" name="time" id="time" value="<%= time %>" class="input_inputes" readonly>
+
+                    <label for="veiculo">Escolha seu veículo:</label>
+                    <select name="veiculo" id="veiculo" class="input_inputes">
+                        <% veiculos.forEach((veiculo)=>{ %>
+                            <option value="<%= veiculo.id_veiculo %>"><%= veiculo.marca %> <%= veiculo.modelo %></option>
+                        <% }) %>
+                    </select>
+
+                    <button type="submit" class="btn_yellow">Reservar</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
 </body>
 <%- include ("../partials/footer.ejs") %>
