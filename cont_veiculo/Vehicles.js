@@ -25,7 +25,7 @@ Veiculo = conexao.define('veiculo', {
         allowNull: false,
     },
     tipo_veiculo: {
-        type: Sequelize.ENUM('carro', 'moto', 'caminhao', 'van', 'motorhome'),
+        type: Sequelize.ENUM('CARRO', 'MOTO', 'CAMINHÃO', 'VAN', 'MOTORHOME'),
         allowNull: false
     },
     id_usuario: {

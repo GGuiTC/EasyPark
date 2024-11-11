@@ -75,7 +75,7 @@
     
                                 <input class="input_inputes" type="text" name="email" id="email" value="<%= perfil.email %>" required>
                                 
-                                <input class="input_inputes" type="text" name="telefone" id="telefone" value="<%= perfil.telefone %>" required>
+                                <input class="input_inputes" type="text" name="telefone" id="telefone" value="<%= perfil.telefone %>" oninput="mascaraTelefone(this)" required>
     
                                 <div class="radio-group"> <!-- ARRUMAR PARA SELECIONAR O SEXO DE ACRODO COM O BANCO DE DADOS -->
                                     <% if (perfil.sexo === 'masculino') { %>
@@ -100,9 +100,9 @@
                                     <label for="outro">Outro</label>
                                 </div>
     
-                                <input class="input_inputes" type="text" name="cpf" id="cpf" value="<%= perfil.cpf %>" required>
+                                <input class="input_inputes" type="text" name="cpf" id="cpf" value="<%= perfil.cpf %>" oninput="mascaraCPF(this)" required>
     
-                                <input class="input_inputes" type="text" name="rg" id="rg" value="<%= perfil.rg %>" required>
+                                <input class="input_inputes" type="text" name="rg" id="rg" value="<%= perfil.rg %>" oninput="mascaraRG(this)" required>
     
                                 <input class="input_inputes" type="date" name="data_nasc" id="data_nasc" value="<%= perfil.data_nasc %>" required>
     

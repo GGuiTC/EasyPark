@@ -23,12 +23,12 @@ router.get("/cadastro-veiculos", adminAut, (req,res)=>{
 })
 
 router.post("/cadastro_veiculo", (req,res)=>{
-    let id_usuario = req.body.id
-    let tipo_veiculo = req.body.tipo
-    let marca = req.body.marca
-    let modelo = req.body.modelo
-    let cor = req.body.cor
-    let placa = req.body.placa
+    let id_usuario = req.body.id.toUpperCase();
+    let tipo_veiculo = req.body.tipo.toUpperCase();
+    let marca = req.body.marca.toUpperCase();
+    let modelo = req.body.modelo.toUpperCase();
+    let cor = req.body.cor.toUpperCase();
+    let placa = req.body.placa.toUpperCase();
     Veiculo.create({
         id_usuario: id_usuario,
         tipo_veiculo: tipo_veiculo,

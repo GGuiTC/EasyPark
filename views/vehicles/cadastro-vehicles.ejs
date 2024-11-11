@@ -13,28 +13,28 @@
                     <div class="inputes">
                         <label>Tipo</label>
                         <select name="tipo" id="tipo" class="input_inputes" required>
-                            <option value="carro">Carro</option>
-                            <option value="moto">Moto</option>
-                            <option value="caminhao">Caminhão</option>
-                            <option value="van">Van</option>
-                            <option value="motorhome">Motorhome</option>
+                            <option value="CARRO">CARRO</option>
+                            <option value="MOTO">MOTO</option>
+                            <option value="CAMINHÃO">CAMINHÃO</option>
+                            <option value="VAN">VAN</option>
+                            <option value="MOTORHOME">MOTORHOME</option>
                         </select>
                     </div>
                     <div class="inputes">
                         <label>Marca</label>
-                        <input type="text" name="marca" id="marca" class="input_inputes" placeholder="Digite aqui" required>
+                        <input type="text" name="marca" id="marca" class="input_inputes" placeholder="Digite aqui" onblur="this.value = this.value.toUpperCase();" required>
                     </div>
                     <div class="inputes">
                         <label>Modelo</label>
-                        <input type="text" name="modelo" id="modelo" class="input_inputes" placeholder="Digite aqui" required>
+                        <input type="text" name="modelo" id="modelo" class="input_inputes" placeholder="Digite aqui" onblur="this.value = this.value.toUpperCase();" required>
                     </div>
                     <div class="inputes">
                         <label>Cor</label>
-                        <input type="text" name="cor" id="cor" class="input_inputes" placeholder="Digite aqui" required>
+                        <input type="text" name="cor" id="cor" class="input_inputes" placeholder="Digite aqui" onblur="this.value = this.value.toUpperCase();" required>
                     </div>
                     <div class="inputes">
                         <label>Placa</label>
-                        <input type="text" name="placa" id="placa" class="input_inputes" placeholder="Digite aqui" required>
+                        <input type="text" name="placa" id="placa" class="input_inputes" placeholder="Digite aqui" onblur="this.value = this.value.toUpperCase();" required>
                     </div>
                     <input type="hidden" name="id" id="id" value="<%= id %>">
                     <div class="justify-center">
