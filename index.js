@@ -37,7 +37,7 @@ conexao.authenticate().then(()=>{
 })
 
 app.get("/dashboard",adminAut, (req,res)=>{
-    id = req.session.usuario.id;                /* ------------- COPIA PROS BAGULHO */
+    let id = req.session.usuario.id;                /* ------------- COPIA PROS BAGULHO */
     res.render("index2", { id })
 })
 
@@ -46,7 +46,30 @@ app.get("/",(req,res)=>{
 })
 
 app.get("/data_page",adminAut, (req, res)=>{
-    res.render("data-page");
+    let id = req.session.usuario.id;
+    Perfil.findOne({
+        where: {
+            id_usuario: id
+        }
+    }).then((perfil)=>{
+        if(perfil.telefone == undefined & perfil.sexo == undefined & perfil.cpf == undefined & perfil.rg == undefined & perfil.data_nasc == undefined){
+            res.redirect("/perfil_page");
+        }
+        else{
+            Veiculo.findOne({
+                where: {
+                    id_usuario: id
+                }
+            }).then((veiculos)=>{
+                if(veiculos == undefined){
+                    res.redirect("/vehicle_page");
+                }
+                else{
+                    res.render("data-page");
+                }
+            })
+        }
+    })
 })
 
 app.get("/logout", (req, res) => {

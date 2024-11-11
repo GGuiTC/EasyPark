@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const Usuario = require('./Users');
+const Perfil = require('../cont_perfil/Perfil')
 const bcrypt = require('bcryptjs');
 
 router.use(bodyParser.urlencoded({extended: true}));
@@ -34,8 +35,17 @@ router.post("/cadastro_usuario", (req,res)=>{
                 email: email,
                 senha: hash,
                 nivel_usuario: nivel_usuario,
-            }).then(()=>{
-                res.render("user/login_page");
+            }).then((usuario)=>{
+                let id_usuario = usuario.id_usuario
+                let nome_perfil = usuario.nome
+                let email_perfil = usuario.email
+                Perfil.create({
+                    id_usuario: id_usuario,
+                    nome: nome_perfil,
+                    email: email_perfil
+                }).then(()=>{
+                    res.render("user/login_page");
+                })
             })
         }
         else{

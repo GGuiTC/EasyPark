@@ -18,8 +18,8 @@ router.get("/vehicle_page", adminAut, (req,res)=>{
 })
 
 router.get("/cadastro-veiculos", adminAut, (req,res)=>{
-    id_usuario = req.session.usuario.id;
-    res.render("vehicles/cadastro-vehicles", {id_usuario});
+    let id = req.session.usuario.id;
+    res.render("vehicles/cadastro-vehicles", {id});
 })
 
 router.post("/cadastro_veiculo", (req,res)=>{
