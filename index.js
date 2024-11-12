@@ -37,8 +37,8 @@ conexao.authenticate().then(()=>{
 })
 
 app.get("/dashboard",adminAut, (req,res)=>{
-    let id = req.session.usuario.id;                /* ------------- COPIA PROS BAGULHO */
-    res.render("index2", { id })
+    let usuario = req.session.usuario;                /* ------------- COPIA PROS BAGULHO */
+    res.render("index2", { usuario })
 })
 
 app.get("/",(req,res)=>{
