@@ -7,6 +7,12 @@ const adminAut = require('../middleware/adminAutoriz');
 
 router.use(bodyParser.urlencoded({extended: true}));
 
+router.get("/cria-vaga", adminAut, (req,res)=>{
+    Vaga.findAll().then((vagas)=>{
+        res.render("park/cadastro-vaga", {vagas})
+    })
+})
+
 module.exports = router;
 
 

@@ -1,0 +1,8 @@
+.border-plus{
+    border-style: solid;
+    border-color: var(--border-default);
+}
+.border-plus h1{
+    font-size: 80px;
+    font-weight: 100;
+}

@@ -1,0 +1,60 @@
+<%- include ("../partials/header.ejs") %>
+<%- include ("../partials/navbar3.ejs") %>
+<link rel="stylesheet" href="/css2/park-page.css">
+<link rel="stylesheet" href="/css2/cadastro-vaga.css">
+</head>
+<body>
+    <div class="tetudo justify-center">
+        <h1>Mapa do Estacionamento</h1>
+        <div class="mapa margin">
+
+
+            <% vagas.forEach((vaga) => { %>
+                <!-- NORMAL VAGA -->
+                <% if(vaga.tipo_vaga === 'normal'){ %>
+                    <div class="vaga border-top-none normal-vaga">
+                        <h1><%= vaga.numero %></h1>
+                    </div>
+                <% } %>
+                
+                <!-- AUTISTA VAGA -->
+                <% if(vaga.tipo_vaga === 'autista'){ %>
+                    <div class="vaga border-top-none especial-vaga">
+                        <h5><%= vaga.numero %></h5>
+                        <img src="/img/autista.png" alt="Vaga para autista">
+                    </div>
+                <% } %>
+
+                <!-- PCD VAGA -->
+                <% if(vaga.tipo_vaga === 'pcd'){ %>
+                    <div class="vaga border-top-none especial-vaga">
+                        <h5><%= vaga.numero %></h5>
+                        <img src="/img/cadeirante.png" alt="Vaga para pdc">
+                    </div>
+                <% } %>
+
+                <!-- GESTANTE VAGA -->
+                <% if(vaga.tipo_vaga === 'gestante'){ %>
+                    <div class="vaga border-top-none especial-vaga">
+                        <h5><%= vaga.numero %></h5>
+                        <img src="/img/gestante.png" alt="Vaga para gestante">
+                    </div>
+                <% } %>
+
+                <!-- IDOSO VAGA -->
+                <% if(vaga.tipo_vaga === 'idoso'){ %>
+                    <div class="vaga border-top-none especial-vaga">
+                        <h5><%= vaga.numero %></h5>
+                        <img src="/img/idoso.png" alt="Vaga para idoso">
+                    </div>
+                <% } %>
+            <% }) %>
+            <a href="#">
+                <div class="vaga border-plus">
+                    <h1>+</h1>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+<%- include ("../partials/footer.ejs") %>
