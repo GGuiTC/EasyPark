@@ -7,9 +7,20 @@ const adminAut = require('../middleware/adminAutoriz');
 
 router.use(bodyParser.urlencoded({extended: true}));
 
-router.get("/cria-vaga", adminAut, (req,res)=>{
+router.get("/mapa-cria-vaga", adminAut, (req,res)=>{
     Vaga.findAll().then((vagas)=>{
-        res.render("park/cadastro-vaga", {vagas})
+        res.render("park/mapa-cria-vaga", {vagas})
+    })
+})
+
+router.get("/cria-vaga", adminAut, (req,res)=>{
+    let i = 0
+    Vaga.findAll().then((vagas)=>{
+        vagas.forEach((vaga)=>{
+            i = i + 1
+        });
+        i = i + 1
+        res.render("park/cadastra-vaga", {vagas, i});
     })
 })
 

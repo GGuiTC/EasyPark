@@ -1,0 +1,54 @@
+<%- include ("../partials/header.ejs") %>
+<%- include ("../partials/navbar3.ejs") %>
+<link rel="stylesheet" href="/css2/cadastra-vaga.css">
+</head>
+<body>
+    <div class="tetudo justify-center">
+        <div class="margin">
+            <div class="margin-content">
+                <h1>Cria Vaga</h1>
+                <form action="#######" method="post" class="margin-subcontent">
+                    <div class="inputes">
+                        <label for="numero">Número Vaga</label>
+                        <input type="number" name="numero" id="numero" class="input_inputes" value="<%= i %>">
+                    </div>
+        
+                    <div class="inputes">
+                        <label for="tipo_vaga">Tipo da Vaga</label>
+                        <select name="tipo_vaga" id="tipo_vaga" class="input_inputes">
+                            <option value="normal">Comum</option>
+                            <option value="autista">Autista</option>
+                            <option value="pcd">Pessoa com Deficiência</option>
+                            <option value="gestante">Gestante</option>
+                            <option value="idoso">Idoso</option>
+                        </select>
+                    </div>
+        
+                    <div class="inputes">
+                        <label for="descricao">Descrição</label>
+                        <textarea class="form-control" name="descricao" id="artigo"></textarea>
+                    </div>
+        
+                    <div class="together">
+                        <div class="inputes">
+                            <label for="preco">Preço</label>
+                            <input type="text" name="preco" id="preco" oninput="formatarParaReais(this)" class="input_inputes">
+                        </div>
+            
+                        <p>por</p>
+            
+                        <div class="inputes">
+                            <label for="tempo">Tempo</label>
+                            <input type="time" name="tempo" id="tempo" class="input_inputes">
+                        </div>
+                    </div>
+
+                    <div class="inputes justify-center">
+                        <button class="btn_yellow">Criar Vaga</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include ("../partials/footer.ejs") %>

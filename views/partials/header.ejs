@@ -293,4 +293,20 @@
         rg = rg.replace(/(\d{3})(\d{1})$/, "$1-$2");
         input.value = rg.substring(0, 12);
     }
+    
+    function formatarParaReais(input) {
+        // Remove todos os caracteres que não sejam números
+        let valor = input.value.replace(/\D/g, "");
+        
+        // Converte o valor para centavos, se ele existir
+        if (valor.length > 0) {
+            valor = (parseInt(valor) / 100).toFixed(2);
+            // Converte para o formato de moeda brasileira
+            valor = "R$ " + valor.replace(".", ",");
+        } else {
+            valor = "R$ 0,00";
+        }
+
+        input.value = valor;
+    }
 </script>

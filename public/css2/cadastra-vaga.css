@@ -1,0 +1,52 @@
+.margin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.margin-content{
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.margin-subcontent{
+    width: 100%;
+}
+
+.form-control{
+    height: 150px !important;
+    border-style: solid;
+    border-color: var(--border-default);
+    border-width: 2px;
+    border-radius: 8px;
+    padding: 0 15px;
+}
+
+.inputes{
+    margin-top: 20px;
+}
+
+.together{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.together .inputes{
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+}
+
+.together .inputes label{
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+
+.together .inputes .input_inputes{
+    width: 300px;
+}
