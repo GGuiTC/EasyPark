@@ -10,8 +10,8 @@ router.use(bodyParser.urlencoded({extended: true}));
 router.get("/mapa-cria-vaga", adminAut, (req,res)=>{
     Vaga.findAll().then((vagas)=>{
         res.render("park/mapa-cria-vaga", {vagas})
-    })
-})
+    });
+});
 
 router.get("/cria-vaga", adminAut, (req,res)=>{
     let i = 0
@@ -21,8 +21,31 @@ router.get("/cria-vaga", adminAut, (req,res)=>{
         });
         i = i + 1
         res.render("park/cadastra-vaga", {vagas, i});
-    })
-})
+    });
+});
+
+router.post("/cadastro-cria-vaga", (req,res)=>{
+    let numero = req.body.numero;
+    let tipo_vaga = req.body.tipo_vaga;
+    let descricao = req.body.descricao;
+    let tempo = req.body.tempo;
+
+    let valorFormatado = req.body.preco;
+
+    valorFormatado = valorFormatado.replace("R$ ", "").replace(",", ".");
+
+    let preco = parseFloat(valorFormatado);
+
+    Vaga.create({
+        numero: numero,
+        tipo_vaga: tipo_vaga,
+        descricao: descricao,
+        preco: preco,
+        tempo: tempo
+    }).then(()=>{
+        res.redirect("/mapa-cria-vaga");
+    });
+});
 
 module.exports = router;
 
