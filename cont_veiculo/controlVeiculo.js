@@ -8,18 +8,20 @@ const adminAut = require('../middleware/adminAutoriz');
 router.use(bodyParser.urlencoded({extended: true}));
 
 router.get("/vehicle_page", adminAut, (req,res)=>{
+    let usuario = req.session.usuario;
     let id_usuario = req.session.usuario.id;
     let nome = req.session.usuario.nome;
     Veiculo.findAll({
         where: {id_usuario: id_usuario}
     }).then((veiculo)=>{
-        res.render("vehicles/vehicles-page", { veiculo, nome });
+        res.render("vehicles/vehicles-page", { veiculo, nome, usuario });
     })
 })
 
 router.get("/cadastro-veiculos", adminAut, (req,res)=>{
+    let usuario = req.session.usuario;
     let id = req.session.usuario.id;
-    res.render("vehicles/cadastro-vehicles", {id});
+    res.render("vehicles/cadastro-vehicles", { id, usuario });
 })
 
 router.post("/cadastro_veiculo", (req,res)=>{
@@ -53,9 +55,10 @@ router.post("/deleta-vehicle", (req, res)=>{
 })
 
 router.get("/edita-vehicle/:id", adminAut, (req,res)=>{
+    let usuario = req.session.usuario;
     let id = req.params.id;
     Veiculo.findByPk(id).then((veiculo)=>{
-        res.render("vehicles/alte_vehicle", {veiculo})
+        res.render("vehicles/alte_vehicle", { veiculo, usuario })
     })
 })
 

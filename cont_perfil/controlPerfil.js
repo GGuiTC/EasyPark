@@ -9,6 +9,7 @@ const { where } = require('sequelize');
 router.use(bodyParser.urlencoded({extended: true}));
 
 router.get("/perfil_page",adminAut, (req,res)=>{
+    let usuario = req.session.usuario;
     let id_usuario = req.session.usuario.id;
     let nome = req.session.usuario.nome;
     let email = req.session.usuario.email;
@@ -21,10 +22,10 @@ router.get("/perfil_page",adminAut, (req,res)=>{
                 nome: nome,
                 email: email
             }).then((perfil)=>{
-                res.render("perfil/perfil-page", {perfil, nome})
+                res.render("perfil/perfil-page", {perfil, nome, usuario})
             })
         }else{
-            res.render("perfil/perfil-page", {perfil, nome})
+            res.render("perfil/perfil-page", {perfil, nome, usuario})
         }
     
     })

@@ -1,8 +1,12 @@
 <%- include ("../partials/header.ejs") %>
-<%- include ("../partials/navbar3.ejs") %>
 <link rel="stylesheet" href="/css2/park-page.css">
 <link rel="stylesheet" href="/css2/mapa-cria-vaga.css">
 </head>
+<% if(usuario.nivel_usuario == 1){ %>
+    <%- include ("../partials/navbar4.ejs") %>
+<% }else{ %>
+    <%- include ("../partials/navbar3.ejs") %>
+<% } %>
 <body>
     <div class="tetudo justify-center">
         <h1>Mapa do Estacionamento</h1>

@@ -46,6 +46,7 @@ app.get("/",(req,res)=>{
 })
 
 app.get("/data_page",adminAut, (req, res)=>{
+    let usuario = req.session.usuario;
     let id = req.session.usuario.id;
     Perfil.findOne({
         where: {
@@ -65,7 +66,7 @@ app.get("/data_page",adminAut, (req, res)=>{
                     res.redirect("/vehicle_page");
                 }
                 else{
-                    res.render("data-page");
+                    res.render("data-page", {usuario});
                 }
             })
         }

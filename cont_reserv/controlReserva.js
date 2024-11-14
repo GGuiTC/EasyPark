@@ -13,7 +13,8 @@ router.use(bodyParser.urlencoded({extended: true}));
 
 
 router.get("/reserv_page", adminAut, (req, res) => {
-    const id = req.session.usuario.id;
+    let id = req.session.usuario.id;
+    let usuario = req.session.usuario;
     let nome = req.session.usuario.nome;
 
     Perfil.findOne({
@@ -28,7 +29,7 @@ router.get("/reserv_page", adminAut, (req, res) => {
                 { model: Veiculo, as:'veiculo', attributes: ['marca', 'modelo', 'cor', 'placa'] }
             ]
         }).then((reservas) => {
-            res.render("reserv/reserv-page", { reservas, id, nome });
+            res.render("reserv/reserv-page", { reservas, id, nome, usuario });
         }).catch((error) => {
             console.error("Erro ao buscar reservas:", error);
             res.status(500).send("Erro ao buscar reservas.");
@@ -42,6 +43,7 @@ router.get("/reserv_page", adminAut, (req, res) => {
 router.post("/reserva_vaga", adminAut, (req, res) => {
     let date = req.body.date;
     let time = req.body.time;
+    let usuario = req.session.usuario;
     let vagasStatus = []; // Array para armazenar o status de cada vaga
 
     // Busca todas as vagas em ordem crescente de id_vaga
@@ -73,7 +75,7 @@ router.post("/reserva_vaga", adminAut, (req, res) => {
             // Ordena o array vagasStatus por id_vaga, para garantir a ordem correta
             vagasStatus.sort((a, b) => a.id_vaga - b.id_vaga);
 
-            res.render("park/park-page", { vagasStatus, date, time });
+            res.render("park/park-page", { vagasStatus, date, time, usuario });
         }).catch((error) => {
             console.error("Erro ao buscar status das reservas:", error);
             res.status(500).send("Erro ao processar os dados.");
@@ -129,6 +131,7 @@ router.post("/reserva_vaga", adminAut, (req, res) => {
 
 router.get("/reserva_vaga", adminAut, (req, res)=>{
     const id = req.session.usuario.id;
+    let usuario = req.session.usuario;
     let id_vaga = req.query.id_vaga;
     let numero = req.query.numero;
     let date = req.query.date;
@@ -143,7 +146,7 @@ router.get("/reserva_vaga", adminAut, (req, res)=>{
                 id_usuario: id
             }
         }).then((veiculos)=>{
-            res.render("reserv/reserva-vaga", { perfil, veiculos, id_vaga, numero, date, time })
+            res.render("reserv/reserva-vaga", { perfil, veiculos, id_vaga, numero, date, time, usuario })
         })
     })
 })

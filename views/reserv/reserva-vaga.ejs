@@ -1,7 +1,11 @@
 <%- include ("../partials/header.ejs") %>
 <link rel="stylesheet" href="/css2/reserva-vaga.css">
 </head>
-<%- include ("../partials/navbar3.ejs") %>
+<% if(usuario.nivel_usuario == 1){ %>
+    <%- include ("../partials/navbar4.ejs") %>
+<% }else{ %>
+    <%- include ("../partials/navbar3.ejs") %>
+<% } %>
 <body>
     <div class="tetudo justify-center">
         <div class="margin">

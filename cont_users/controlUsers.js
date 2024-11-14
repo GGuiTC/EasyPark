@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const Usuario = require('./Users');
 const Perfil = require('../cont_perfil/Perfil')
 const bcrypt = require('bcryptjs');
+const adminAut = require('../middleware/adminAutoriz');
 
 router.use(bodyParser.urlencoded({extended: true}));
 
@@ -15,8 +16,9 @@ router.get("/singin_page", (req,res)=>{
     res.render("user/singin_page")
 })
 
-router.get("/accounts_page", (req,res)=>{
-    res.render("user/change_account")
+router.get("/accounts_page", adminAut, (req,res)=>{
+    let usuario = req.session.usuario;
+    res.render("user/change_account", { usuario })
 })
 
 router.post("/cadastro_usuario", (req,res)=>{

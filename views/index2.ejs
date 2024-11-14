@@ -1,7 +1,12 @@
 <%- include ("partials/header.ejs") %>
 <link rel="stylesheet" href="css2/index2.css">
 </head>
-<%- include ("partials/navbar3.ejs") %>
+<% if(usuario.nivel_usuario == 1){ %>
+    <%- include ("partials/navbar4.ejs") %>
+<% }else{ %>
+    <%- include ("partials/navbar3.ejs") %>
+<% } %>
+
 
 <body class="body-index2-bg">
     <div class="test">
