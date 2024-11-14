@@ -14,6 +14,7 @@ const ControleReserva = require('./cont_reserv/controlReserva');
 const session = require('express-session');
 const adminAut = require('./middleware/adminAutoriz'); /* -------- MNADA PROS BAGULHO */
 const { where } = require('sequelize');
+const ngrok = require('@ngrok/ngrok');
 // teste
  app.use(session({
      secret: "qualquercoisa",
@@ -87,3 +88,11 @@ app.get("/logout", (req, res) => {
 app.listen(3000,()=>{
     console.log("SERVIDOR RODANDO");
 })
+
+
+// Get your endpoint online with a reserved domain
+ngrok.connect({ 
+    addr: 3000, 
+    authtoken_from_env: true, 
+    domain: 'shining-bear-helped.ngrok-free.app' // substitua por seu domínio reservado
+}).then(listener => console.log(`Ingress established at: ${listener.url()}`));
