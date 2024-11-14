@@ -7,7 +7,7 @@ const Vaga = require('../cont_park/Park')
 const Veiculo = require('../cont_veiculo/Vehicles')
 
 const adminAut = require('../middleware/adminAutoriz');
-const { where } = require('sequelize');
+const { where, Op } = require('sequelize');
 
 router.use(bodyParser.urlencoded({extended: true}));
 
@@ -39,7 +39,7 @@ router.get("/reserv_page", adminAut, (req, res) => {
     });
 });
 
-router.post("/reserva_vaga",adminAut, (req, res) => {
+router.post("/reserva_vaga", adminAut, (req, res) => {
     let date = req.body.date;
     let time = req.body.time;
     let vagasStatus = []; // Array para armazenar o status de cada vaga
@@ -52,9 +52,12 @@ router.post("/reserva_vaga",adminAut, (req, res) => {
             return Reserva.findOne({
                 where: {
                     data_reserva: date,
-                    prev_chegada: time,
+                    prev_chegada: {
+                        [Op.lte]: time // Considera todas as reservas a partir do horário selecionado
+                    },
                     id_vaga: vaga.id_vaga
-                }
+                },
+                order: [['prev_chegada', 'DESC']]
             }).then((reserva) => {
                 vagasStatus.push({
                     id_vaga: vaga.id_vaga,
@@ -70,7 +73,7 @@ router.post("/reserva_vaga",adminAut, (req, res) => {
             // Ordena o array vagasStatus por id_vaga, para garantir a ordem correta
             vagasStatus.sort((a, b) => a.id_vaga - b.id_vaga);
 
-            res.render("park/park-page", { vagasStatus, date, time});
+            res.render("park/park-page", { vagasStatus, date, time });
         }).catch((error) => {
             console.error("Erro ao buscar status das reservas:", error);
             res.status(500).send("Erro ao processar os dados.");
@@ -80,6 +83,49 @@ router.post("/reserva_vaga",adminAut, (req, res) => {
         res.status(500).send("Erro ao buscar as vagas.");
     });
 });
+
+
+// router.post("/reserva_vaga",adminAut, (req, res) => {
+//     let date = req.body.date;
+//     let time = req.body.time;
+//     let vagasStatus = []; // Array para armazenar o status de cada vaga
+
+//     // Busca todas as vagas em ordem crescente de id_vaga
+//     Vaga.findAll({
+//         order: [['id_vaga', 'ASC']]
+//     }).then((vagas) => {
+//         const promises = vagas.map((vaga) => {
+//             return Reserva.findOne({
+//                 where: {
+//                     data_reserva: date,
+//                     prev_chegada: time,
+//                     id_vaga: vaga.id_vaga
+//                 }
+//             }).then((reserva) => {
+//                 vagasStatus.push({
+//                     id_vaga: vaga.id_vaga,
+//                     tipo_vaga: vaga.tipo_vaga,
+//                     numero: vaga.numero,
+//                     status: reserva ? "reservado" : "vazio"
+//                 });
+//             });
+//         });
+
+//         // Aguarda todas as Promises antes de renderizar a página
+//         Promise.all(promises).then(() => {
+//             // Ordena o array vagasStatus por id_vaga, para garantir a ordem correta
+//             vagasStatus.sort((a, b) => a.id_vaga - b.id_vaga);
+
+//             res.render("park/park-page", { vagasStatus, date, time});
+//         }).catch((error) => {
+//             console.error("Erro ao buscar status das reservas:", error);
+//             res.status(500).send("Erro ao processar os dados.");
+//         });
+//     }).catch((error) => {
+//         console.error("Erro ao buscar vagas:", error);
+//         res.status(500).send("Erro ao buscar as vagas.");
+//     });
+// });
 
 router.get("/reserva_vaga", adminAut, (req, res)=>{
     const id = req.session.usuario.id;
