@@ -44,11 +44,33 @@
                 </div>
             </form>
         </div>
-
-
-
-
     </div>
+
+
+    <div class="hide-div justify-center">
+        <div class="margin justify-center">
+            <h1>Cadastre-se</h1>
+
+            <form action="#" method="post" class="hide-form">
+                <div class="inputes">
+                    <label>Nome</label>
+                    <input type="text" name="nome" id="nome" class="input_inputes" placeholder="Digite seu nome" required>
+                </div>
+                <div class="inputes">
+                    <label>Email</label>
+                    <input type="text" name="email" id="email" class="input_inputes" placeholder="Digite seu email" required>
+                </div>
+    
+                <div class="inputes">
+                    <label>Senha</label>
+                    <input type="password" name="senha" id="senha" class="input_inputes" placeholder="Digite sua senha" required>
+                </div>
+    
+                <button type="submit" class="btn_yellow btn_bw">Sing in</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 
 <%- include ("../partials/footer.ejs") %>

@@ -58,7 +58,48 @@
             color: var(--hovering-terciary-color);
             transition: 500ms;
         }
+        
+        
+        
+        /* pra cll */
+        .hide-div{
+            display: none;
+        }
+        .hide-div h1{
+            font-size: 90px;
+        }
 
+        @media (max-width: 992px) {
+            /* Esconde navbar */
+            .container_lg_sg{
+                display: none !important;
+            }
+            /* esconde background */
+            .body-bg-image{
+                display: none;
+            }
+        
+            /* Estilização no cll */
+            .hide-div{
+                display: flex;
+                height: 100vh;
+            }
+            label{
+                font-size: 35px;
+            }
+            .input_inputes{
+                height: 150px !important;
+                border-radius: 30px !important;
+                padding: 0 30px !important;
+                font-size: 35px;
+            }
+            button{
+                height: 130px;
+                border-radius: 20px !important;
+                font-size: 35px;
+            }
+        }
+        
 
 
 
