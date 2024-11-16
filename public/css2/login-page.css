@@ -39,6 +39,9 @@
 .form_lg a{
     color: var(--secundary-color);
 }
+.hide-div{
+    display: none;
+}
 
 @media(max-width: 992px){
     .container_lg{
