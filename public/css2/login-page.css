@@ -39,3 +39,23 @@
 .form_lg a{
     color: var(--secundary-color);
 }
+
+@media(max-width: 992px){
+    .container_lg{
+        display: none;
+    }
+    .hide-div{
+        height: 100vh;
+        display: flex;
+    }
+    .margin{
+        flex-direction: column;
+    }
+    .hide-form{
+        height: 650px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}
