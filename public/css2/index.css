@@ -2,6 +2,7 @@
     background-image: url("/img/body-bg-image.png");
     background-size: cover;
     background-repeat: no-repeat;
+    height: 88vh;
 }
 .body-bg-image .words{
     display: flex;
@@ -22,18 +23,51 @@
 
     color: black;
 }
-.body-bg-image .words .wlc{
-    margin-top: 30px;
 
-    font-weight: 700;
-    font-style: normal;
-    display: inline;
+.hide-div{
+    display: none;
 }
-.container_peneu{
-    display: flex;
-    flex-direction:row-reverse;
-}
-.container_rodas .peneu{
-    height: 500px;
-    width: 500px;
+
+@media (max-width: 992px) {
+    /* Esconde navbar */
+    .container_lg_sg{
+        display: none;
+    }
+    /* esconde background */
+    .body-bg-image{
+        display: none;
+    }
+
+    /* Estilização no cll */
+    .hide-div{
+        display: flex;
+        height: 100vh;
+        background-color: black;
+        justify-content: center;
+    }
+    .margin{
+        flex-direction: column;
+        /* background-color: blue; */
+        justify-content: space-evenly;
+    }
+    .mobile-title{
+        display: flex;
+    }
+    .margin h1{
+        font-size: 90px;
+        color: white;
+    }
+    .margin h1 strong{
+        color: var(--terciary-color);
+    }
+    .hide-div img{
+        height: 500px;
+        border-radius: 40px;
+    }
+    .buttons{
+        height: 290px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 }
