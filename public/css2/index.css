@@ -48,13 +48,16 @@
         color: var(--terciary-color);
     }
     .hide-div img{
-        height: 500px;
+        height: 25vh;
         border-radius: 40px;
     }
     .buttons{
-        height: 290px;
+        height: 16vh;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+    }
+    .btn_big{
+        width: 21vh;
     }
 }

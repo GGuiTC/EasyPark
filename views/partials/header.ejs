@@ -35,7 +35,7 @@
         h1{
             font-size: 50px;
         }
-        h1, h2, h3, h4, h5, h6, a, li{
+        h1, h2, h3, h4, h5, h6, a, li, button{
             font-family: "Poppins", sans-serif;
         }
         h1, h2, h5{
@@ -66,9 +66,6 @@
         .hide-div{
             display: none;
         }
-        .hide-div h1{
-            font-size: 90px;
-        }
 
         @media (max-width: 992px) {
             /* Esconde navbar */
@@ -81,27 +78,32 @@
             }
         
             /* Estilização no cll */
+            h1{
+                font-size: 6vh;
+            }
             button{
-                height: 130px;
-                border-radius: 20px !important;
-                font-size: 35px;
+                height: 6vh;
+                border-radius: 1vh !important;
+                font-size: 2.5vh;
+                font-weight: 700;
             }
             p{
-                margin: 15px 0;
-                font-size: 35px;
+                margin: 1vh 0;
+                font-size: 2vh;
             }
+            label{
+                font-size: 2vh;
+            }
+            
             .hide-div{
                 display: flex;
                 height: 100vh;
             }
-            label{
-                font-size: 35px;
-            }
             .input_inputes{
-                height: 150px !important;
-                border-radius: 30px !important;
-                padding: 0 30px !important;
-                font-size: 35px;
+                height: 5vh !important;
+                border-radius: 1vh !important;
+                padding: 0 3vw !important;
+                font-size: 2vh;
             }
         }
         
@@ -145,14 +147,6 @@
             color: var(--text-default);
             min-width: 90px;
             min-height: 40px;
-        }
-        .btn_big{
-            font-size: 50px;
-            padding: 30px 0;
-            border-radius: 20px;
-            width: 450px;
-            text-transform: uppercase;
-            font-weight: bold;
         }
         .btn_bw{
             width: 100%;

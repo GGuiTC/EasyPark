@@ -60,7 +60,7 @@
         flex-direction: column;
     }
     .hide-form{
-        height: 900px;
+        height: 44vh;
         width: 100%;
         display: flex;
         flex-direction: column;

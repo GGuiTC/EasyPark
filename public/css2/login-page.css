@@ -55,7 +55,7 @@
         flex-direction: column;
     }
     .hide-form{
-        height: 650px;
+        height: 32vh;
         width: 100%;
         display: flex;
         flex-direction: column;
