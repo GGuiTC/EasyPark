@@ -1,25 +1,52 @@
+h1{
+    font-size: 13vh;
+    font-weight: 700;
+    font-style: normal;
+    margin: 0;
+}
 .body-bg-image{
     background-image: url("/img/body-bg-image.png");
     background-size: cover;
     background-repeat: no-repeat;
     height: 88vh;
-}
-.body-bg-image .words{
     display: flex;
 }
+.body-bg-image .words{
+    height: 88vh;
+    width: 70vw;
+    display: flex;
+    align-items: center;
+}
+.body-bg-image .words h1{
+    font-size: 25vh;
+    margin-left: 1.3vw;
+}
+.body-bg-image .words2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.body-bg-image .words2 .inverte {
+    margin: 0;
+    font-size: 9vw;
+    transform: rotate(69deg); /* Rotaciona o texto em 45 graus */
+    color: rgb(0, 0, 0); /* Define a cor do texto */
+    text-align: center; /* Alinha o texto no centro do contêiner */
+    transform-origin: center; /* Define o ponto de rotação como o centro do elemento */
+    margin-top: 4vh;
+    margin-right: 3vh;
+}
+
 .body-bg-image .words .welcome{
-    font-size: 135px;
+    color: rgb(239, 239, 239);
+}
+
+.body-bg-image .words .welcome strong{
+    font-size: 130px;
     font-weight: 700;
     font-style: normal;
     display: inline;
     margin-top: 70px;
-
-    background-image: linear-gradient(to right, rgb(108, 108, 108), rgb(211, 211, 211));
-
-    background-clip: text;
-    -webkit-background-clip: text;
-
-    -webkit-text-fill-color: transparent;
 
     color: black;
 }
