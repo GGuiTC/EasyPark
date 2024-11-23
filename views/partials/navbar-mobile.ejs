@@ -1,0 +1,35 @@
+
+
+
+    <nav class="nav-container">
+        <a href="/dashboard"><img src="/img/EASYPARK_LOGO2.png" class="logo" /></a>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+          <ul class="nav-list">
+            <li><a href="/dashboard">Home</a></li>
+            <li><a href="/perfil_page">Meu Perfil</a></li>
+            <li><a href="/vehicle_page">Meus Veículos</a></li>
+            <li><a href="/reserv_page">Minhas Reservas</a></li>
+          </ul>
+    </nav>
+
+
+
+
+
+    <!-- <a class="perfil_photo" href="/menu">
+        <img src="/img/menu.png">
+    </a> -->
+
+<script>
+    const menuToggle = document.getElementById('mobile-menu');
+    const navList = document.querySelector('.nav-list');
+  
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+</script>

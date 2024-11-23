@@ -1,4 +1,4 @@
-.body-index2-bg{
+body{
     background-image: url("/img/transit.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -49,4 +49,16 @@
 }
 .metade{
     width: 35%;
+}
+
+@media (max-width: 992px){
+    body{
+        background-image: none;
+    }
+    .body-index2-bg{
+        display: none;
+    }
+    .hide-div{
+        /* background-color: red; */
+    }
 }
