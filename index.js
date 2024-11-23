@@ -1,6 +1,12 @@
 const express = require('express');
 const app = express();
 const conexao = require('./database/basedados');
+const session = require('express-session');
+const adminAut = require('./middleware/adminAutoriz'); /* -------- MNADA PROS BAGULHO */
+const { where } = require('sequelize');
+const ngrok = require('@ngrok/ngrok');
+const flash = require('connect-flash');
+
 const Usuario = require('./cont_users/Users');
 const ControleUsuario = require('./cont_users/controlUsers');
 const Perfil = require('./cont_perfil/Perfil');
@@ -11,22 +17,30 @@ const Vaga = require('./cont_park/Park');
 const ControleVaga = require('./cont_park/controlPark');
 const Reserva = require('./cont_reserv/Reserva');
 const ControleReserva = require('./cont_reserv/controlReserva');
-const session = require('express-session');
-const adminAut = require('./middleware/adminAutoriz'); /* -------- MNADA PROS BAGULHO */
-const { where } = require('sequelize');
-const ngrok = require('@ngrok/ngrok');
+const dadosSaida = require('./cont_dadosSaida/dadosSaida');
+const ControleDadosSaida = require('./cont_dadosSaida/controlDadosSaida');
 // teste
  app.use(session({
      secret: "qualquercoisa",
     resave: "false",
      saveUninitialized: false,
-    cookie:{maxAge: 86500 *30} }))
+    cookie:{maxAge: 86500 *30} 
+}))
+
+app.use(flash());
+
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    next();
+});
 
 app.use("/", ControleUsuario);
 app.use("/", ControlePerfil);
 app.use("/", ControleVeiculo);
 app.use("/", ControleVaga);
 app.use("/", ControleReserva);
+app.use("/", ControleDadosSaida);
 
 app.set("view engine","ejs");
 app.use(express.static('public'));

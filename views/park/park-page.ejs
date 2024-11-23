@@ -23,7 +23,7 @@ Mapa Estacionamento</title>
                     </a>
                 <% } %>
                 <% if(vaga.tipo_vaga === 'normal' && vaga.status === 'reservado'){ %>
-                    <a href="reserva_vaga?id_vaga=<%= vaga.id_vaga %>&numero=<%= vaga.numero %>&date=<%= date %>&time=<%= time %>">
+                    <a href="#">
                         <div class="vaga border-top-none reservado">
                             <h1><%= vaga.numero %></h1>
                         </div>
@@ -40,7 +40,7 @@ Mapa Estacionamento</title>
                     </a>
                 <% } %>
                 <% if(vaga.tipo_vaga === 'autista' && vaga.status === 'reservado'){ %>
-                    <a href="reserva_vaga?id_vaga=<%= vaga.id_vaga %>&numero=<%= vaga.numero %>&date=<%= date %>&time=<%= time %>">
+                    <a href="#">
                         <div class="vaga border-top-none reservado">
                             <h5><%= vaga.numero %></h5>
                             <img src="/img/autista.png" alt="Vaga para autista">
@@ -58,7 +58,7 @@ Mapa Estacionamento</title>
                     </a>
                 <% } %>
                 <% if(vaga.tipo_vaga === 'pcd' && vaga.status === 'reservado'){ %>
-                    <a href="reserva_vaga?id_vaga=<%= vaga.id_vaga %>&numero=<%= vaga.numero %>&date=<%= date %>&time=<%= time %>">
+                    <a href="#">
                         <div class="vaga border-top-none reservado">
                             <h5><%= vaga.numero %></h5>
                             <img src="/img/cadeirante.png" alt="Vaga para pdc">
@@ -76,7 +76,7 @@ Mapa Estacionamento</title>
                     </a>
                 <% } %>
                 <% if(vaga.tipo_vaga === 'gestante' && vaga.status === 'reservado'){ %>
-                    <a href="reserva_vaga?id_vaga=<%= vaga.id_vaga %>&numero=<%= vaga.numero %>&date=<%= date %>&time=<%= time %>">
+                    <a href="#">
                         <div class="vaga border-top-none reservado">
                             <h5><%= vaga.numero %></h5>
                             <img src="/img/gestante.png" alt="Vaga para gestante">
@@ -94,7 +94,7 @@ Mapa Estacionamento</title>
                     </a>
                 <% } %>
                 <% if(vaga.tipo_vaga === 'idoso' && vaga.status === 'reservado'){ %>
-                    <a href="reserva_vaga?id_vaga=<%= vaga.id_vaga %>&numero=<%= vaga.numero %>&date=<%= date %>&time=<%= time %>">
+                    <a href="#">
                         <div class="vaga border-top-none reservado">
                             <h5><%= vaga.numero %></h5>
                             <img src="/img/idoso.png" alt="Vaga para idoso">

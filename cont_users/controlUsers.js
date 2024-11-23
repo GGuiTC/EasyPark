@@ -46,12 +46,12 @@ router.post("/cadastro_usuario", (req,res)=>{
                     nome: nome_perfil,
                     email: email_perfil
                 }).then(()=>{
-                    res.render("user/login_page");
+                    res.redirect("login_page");
                 })
             })
         }
         else{
-            res.redirect("/");
+            res.redirect("login_page");
         }
     })
 })
