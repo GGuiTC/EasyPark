@@ -53,9 +53,14 @@ h1{
 
 @media (max-width: 992px) {
 
+    h1{
+        font-size: 6vh;
+    }
+
     /* Estilização no cll */
     .hide-div{
         display: flex;
+        flex-direction: row;
         height: 100vh;
         background-color: black;
         justify-content: center;

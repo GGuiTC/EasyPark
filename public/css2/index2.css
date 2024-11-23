@@ -58,7 +58,25 @@ body{
     .body-index2-bg{
         display: none;
     }
-    .hide-div{
-        /* background-color: red; */
+    
+    .bgi-index2-mobile{
+        height: 20vh;
+        width: 100%;
+        background-image: url("/img/transit.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .wlc-bar{
+        height: 8vh;
+    }
+    .button-container{
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .button-container h1{
+        margin-bottom: 5vh;
     }
 }
