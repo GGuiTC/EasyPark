@@ -32,3 +32,23 @@ label{
     border-style: solid;
     border-radius: 5px;
 }
+
+@media(max-width: 992px){
+    form{
+        height: fit-content;
+        width: 100%;
+    }
+    label{
+        height: auto;
+        flex-direction: row;
+        margin-bottom: 0;
+    }
+    input[type=radio]{
+        height: 2vh;
+        width: 2vh;
+    }
+
+    .metadinhas-align{ 
+        justify-content: center;
+    }
+}

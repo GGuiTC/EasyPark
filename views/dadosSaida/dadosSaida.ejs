@@ -1,0 +1,24 @@
+<%- include ("../partials/header.ejs") %>
+Dados Arduino</title>
+</head>
+<% if(usuario.nivel_usuario == 1){ %>
+    <%- include ("../partials/navbar4.ejs") %>
+<% }else{ %>
+    <%- include ("../partials/navbar3.ejs") %>
+<% } %>
+<body>
+    <h1>Dados Arduino</h1>
+    <form action="/dados_arduino" method="post">
+        <label for="date">Data da chegada</label>
+        <input type="date" name="date" id="date"><br>
+        
+        <label for="time">Tempo da Chegada</label>
+        <input type="time" name="time" id="time"><br>
+
+        <label for="id_vaga">Id Vaga</label>
+        <input type="number" name="id_vaga" id="id_vaga"><br>
+
+        <button type="submit">Ver</button>
+    </form>
+</body>
+<%- include ("../partials/footer.ejs") %>

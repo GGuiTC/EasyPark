@@ -41,6 +41,9 @@ a{
 .reservado{
     border-color: var(--terciary-color);
 }
+.ocupado{
+    border-color: var(--ocupado-color);
+}
 .vaga img{
     height: 50px;
     border-radius: 5px;

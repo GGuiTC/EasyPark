@@ -126,41 +126,33 @@ Meu Perfil</title>
     <div class="hide-div">
         <%- include ("../partials/navbar-mobile.ejs") %>
 
-        <div class="container border-defaul">
+        <div class="container">
             <div class="meu-perfil">
                 <div class="title-align">
                     <h2>Meu perfil</h2>
                 </div>
                 <div class="metadinhas-align">
-                    <div class="metadinha1">
-                        <label>Nome:</label>
-                        <label>Email:</label>
-                        <label>Número de telefone:</label>
-                        <label>Sexo:</label>
-                        <label>CPF:</label>
-                        <label>RG:</label>
-                        <label>Data de nascimento:</label>
-                    </div>
-
-
-
-
-
-
-
-
-
-                    <div class="metadinha2">
-
-                        <form action="/cadastra-edita-perfil" method="post">
-                            <input type="hidden" name="id" id="id" value="<%= perfil.id_usuario %>">
-
+                    <form action="/cadastra-edita-perfil" method="post">
+                        
+                        <input type="hidden" name="id" id="id" value="<%= perfil.id_usuario %>">
+                        
+                        <div class="inputes">
+                            <label>Nome:</label>
                             <input class="input_inputes" type="text" name="nome" id="nome" value="<%= perfil.nome %>" required>
-
+                        </div>
+    
+                        <div class="inputes">
+                            <label>Email:</label>
                             <input class="input_inputes" type="text" name="email" id="email" value="<%= perfil.email %>" required>
-                            
+                        </div>
+                        
+                        <div class="inputes">
+                            <label>Número de telefone:</label>
                             <input class="input_inputes" type="text" name="telefone" id="telefone" value="<%= perfil.telefone %>" oninput="mascaraTelefone(this)" required>
-
+                        </div>
+    
+                        <div class="inputes">
+                            <label>Sexo:</label>
                             <div class="radio-group"> <!-- ARRUMAR PARA SELECIONAR O SEXO DE ACRODO COM O BANCO DE DADOS -->
                                 <% if (perfil.sexo === 'masculino') { %>
                                     <input type="radio" id="masculino" name="sexo" value="masculino" checked>
@@ -183,17 +175,27 @@ Meu Perfil</title>
                                 <% } %>
                                 <label for="outro">Outro</label>
                             </div>
-
+                        </div>
+    
+                        <div class="inputes">
+                            <label>CPF:</label>
                             <input class="input_inputes" type="text" name="cpf" id="cpf" value="<%= perfil.cpf %>" oninput="mascaraCPF(this)" required>
-
+                        </div>
+    
+                        <div class="inputes">
+                            <label>RG:</label>
                             <input class="input_inputes" type="text" name="rg" id="rg" value="<%= perfil.rg %>" oninput="mascaraRG(this)" required>
-
+                        </div>
+    
+                        <div class="inputes">
+                            <label>Data de nascimento:</label>
                             <input class="input_inputes" type="date" name="data_nasc" id="data_nasc" value="<%= perfil.data_nasc %>" required>
-
+                        </div>
+    
+                        <div class="justify-center">
                             <button type="submit" class="btn_yellow btn_sw">Gravar</button>
-                        </form>
-
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
