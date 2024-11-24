@@ -27,8 +27,8 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100px;
-    width: 100px;
+    height: 15vh;
+    width: 15vh;
     margin: 20px;
 }
 .normal-vaga{
@@ -45,7 +45,7 @@ a{
     border-color: var(--ocupado-color);
 }
 .vaga img{
-    height: 50px;
+    height: 5vh;
     border-radius: 5px;
     border-style: solid;
     border-width: 8px;
@@ -60,4 +60,20 @@ a{
     border-style: solid;
     border-width: 10px;
     border-bottom: none;
+}
+
+@media(max-width: 992px){
+    h5{
+        font-size: 2.5vh;
+    }
+    .hide-div{
+        background-color: var(--dark-gray);
+    }
+    .vaga{
+        height: 9vh;
+        width: 9vh;
+    }
+    .vaga img{
+        height: 4vh;
+    }
 }

@@ -143,5 +143,146 @@ Mapa Estacionamento</title>
             <% }) %>            
         </div>
     </div>
+
+    <div class="hide-div">
+        <%- include ("../partials/navbar-mobile.ejs") %>
+        <div class="title-align">
+            <h1 align="center">Mapa do Estacionamento</h1>
+        </div>
+
+        <div class="mapa">
+
+
+            <% vagasStatus.forEach((vaga) => { %>
+                <!-- NORMAL VAGA 1 -->
+                <% if(vaga.tipo_vaga === 'normal' && vaga.status === 'vazio'){ %>
+                    <a href="reserva_vaga?id_vaga=<%= vaga.id_vaga %>&numero=<%= vaga.numero %>&date=<%= date %>&time=<%= time %>">
+                        <div class="vaga border-top-none normal-vaga">
+                            <h1><%= vaga.numero %></h1>
+                        </div>
+                    </a>
+                <% } %>
+                <% if(vaga.tipo_vaga === 'normal' && vaga.status === 'reservado'){ %>
+                    <a href="#">
+                        <div class="vaga border-top-none reservado">
+                            <h1><%= vaga.numero %></h1>
+                        </div>
+                    </a>
+                <% } %>
+                <% if(vaga.tipo_vaga === 'normal' && vaga.status === 'ocupado'){ %>
+                    <a href="#">
+                        <div class="vaga border-top-none ocupado">
+                            <h1><%= vaga.numero %></h1>
+                        </div>
+                    </a>
+                <% } %>
+                
+                <!-- AUTISTA VAGA 2 -->
+                <% if(vaga.tipo_vaga === 'autista' && vaga.status === 'vazio'){ %>
+                    <a href="reserva_vaga?id_vaga=<%= vaga.id_vaga %>&numero=<%= vaga.numero %>&date=<%= date %>&time=<%= time %>">
+                        <div class="vaga border-top-none especial-vaga">
+                            <h5><%= vaga.numero %></h5>
+                            <img src="/img/autista.png" alt="Vaga para autista">
+                        </div>
+                    </a>
+                <% } %>
+                <% if(vaga.tipo_vaga === 'autista' && vaga.status === 'reservado'){ %>
+                    <a href="#">
+                        <div class="vaga border-top-none reservado">
+                            <h5><%= vaga.numero %></h5>
+                            <img src="/img/autista.png" alt="Vaga para autista">
+                        </div>
+                    </a>
+                <% } %>
+                <% if(vaga.tipo_vaga === 'autista' && vaga.status === 'ocupado'){ %>
+                    <a href="#">
+                        <div class="vaga border-top-none ocupado">
+                            <h5><%= vaga.numero %></h5>
+                            <img src="/img/autista.png" alt="Vaga para autista">
+                        </div>
+                    </a>
+                <% } %>
+            
+                <!-- PCD VAGA 3 -->
+                <% if(vaga.tipo_vaga === 'pcd' && vaga.status === 'vazio'){ %>
+                    <a href="reserva_vaga?id_vaga=<%= vaga.id_vaga %>&numero=<%= vaga.numero %>&date=<%= date %>&time=<%= time %>">
+                        <div class="vaga border-top-none especial-vaga">
+                            <h5><%= vaga.numero %></h5>
+                            <img src="/img/cadeirante.png" alt="Vaga para pdc">
+                        </div>
+                    </a>
+                <% } %>
+                <% if(vaga.tipo_vaga === 'pcd' && vaga.status === 'reservado'){ %>
+                    <a href="#">
+                        <div class="vaga border-top-none reservado">
+                            <h5><%= vaga.numero %></h5>
+                            <img src="/img/cadeirante.png" alt="Vaga para pdc">
+                        </div>
+                    </a>
+                <% } %>
+                <% if(vaga.tipo_vaga === 'pcd' && vaga.status === 'ocupado'){ %>
+                    <a href="#">
+                        <div class="vaga border-top-none ocupado">
+                            <h5><%= vaga.numero %></h5>
+                            <img src="/img/cadeirante.png" alt="Vaga para pdc">
+                        </div>
+                    </a>
+                <% } %>
+            
+                <!-- GESTANTE 4 -->
+                <% if(vaga.tipo_vaga === 'gestante' && vaga.status === 'vazio'){ %>
+                    <a href="reserva_vaga?id_vaga=<%= vaga.id_vaga %>&numero=<%= vaga.numero %>&date=<%= date %>&time=<%= time %>">
+                        <div class="vaga border-top-none especial-vaga">
+                            <h5><%= vaga.numero %></h5>
+                            <img src="/img/gestante.png" alt="Vaga para gestante">
+                        </div>
+                    </a>
+                <% } %>
+                <% if(vaga.tipo_vaga === 'gestante' && vaga.status === 'reservado'){ %>
+                    <a href="#">
+                        <div class="vaga border-top-none reservado">
+                            <h5><%= vaga.numero %></h5>
+                            <img src="/img/gestante.png" alt="Vaga para gestante">
+                        </div>
+                    </a>
+                <% } %>
+                <% if(vaga.tipo_vaga === 'gestante' && vaga.status === 'ocupado'){ %>
+                    <a href="#">
+                        <div class="vaga border-top-none ocupado">
+                            <h5><%= vaga.numero %></h5>
+                            <img src="/img/gestante.png" alt="Vaga para gestante">
+                        </div>
+                    </a>
+                <% } %>
+
+                <!-- IDOSO 5 -->
+                <% if(vaga.tipo_vaga === 'idoso' && vaga.status === 'vazio'){ %>
+                    <a href="reserva_vaga?id_vaga=<%= vaga.id_vaga %>&numero=<%= vaga.numero %>&date=<%= date %>&time=<%= time %>">
+                        <div class="vaga border-top-none especial-vaga">
+                            <h5><%= vaga.numero %></h5>
+                            <img src="/img/idoso.png" alt="Vaga para idoso">
+                        </div>
+                    </a>
+                <% } %>
+                <% if(vaga.tipo_vaga === 'idoso' && vaga.status === 'reservado'){ %>
+                    <a href="#">
+                        <div class="vaga border-top-none reservado">
+                            <h5><%= vaga.numero %></h5>
+                            <img src="/img/idoso.png" alt="Vaga para idoso">
+                        </div>
+                    </a>
+                <% } %>
+                <% if(vaga.tipo_vaga === 'idoso' && vaga.status === 'ocupado'){ %>
+                    <a href="#">
+                        <div class="vaga border-top-none ocupado">
+                            <h5><%= vaga.numero %></h5>
+                            <img src="/img/idoso.png" alt="Vaga para idoso">
+                        </div>
+                    </a>
+                <% } %>
+            <% }) %>            
+        </div>
+    </div>
+
 </body>
 <%- include ("../partials/footer.ejs") %>
