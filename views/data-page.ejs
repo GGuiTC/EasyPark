@@ -25,11 +25,35 @@ Agenda Data</title>
             </div>
         </div>
     </div>
+
+    <div class="hide-div">
+        <%- include ("partials/navbar-mobile.ejs") %>
+        <div class="div-header">
+            <div class="title-align">
+                <h2 align="center">Data do Agendamento</h2>
+            </div>
+            <form action="/reserva_vaga" method="post">
+                <label for="date">Insira a data de sua preferência:</label>
+                <input type="date" name="date" id="date2" min="" class="input_inputes" required>
+    
+                <label for="date">Insira o horário de sua preferência:</label>
+                <input type="time" name="time" id="time" class="input_inputes" required>
+    
+                <button type="submit" class="btn_yellow">Ver vagas</button>
+            </form>
+        </div>
+    </div>
+
 </body>
 <%- include ("partials/footer.ejs") %>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const dataInput = document.getElementById("date");
+        const hoje = new Date().toISOString().split("T")[0]; // Obtém a data atual no formato 'YYYY-MM-DD'
+        dataInput.min = hoje; // Define o valor mínimo como a data de hoje
+    });
+    document.addEventListener("DOMContentLoaded", () => {
+        const dataInput = document.getElementById("date2");
         const hoje = new Date().toISOString().split("T")[0]; // Obtém a data atual no formato 'YYYY-MM-DD'
         dataInput.min = hoje; // Define o valor mínimo como a data de hoje
     });

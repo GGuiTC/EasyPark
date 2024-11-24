@@ -1,7 +1,7 @@
 label{
     place-self: flex-start;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 2vh;
 }
 input, label{
     color: white;
@@ -33,11 +33,11 @@ input, label{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    margin: 10px;
+    margin: 1vh;
 }
 .div-header h2{
     color: var(--primary-color);
-    margin: 20px 0;
+    margin: 2vh 0;
 }
 .div-header form{
     display: flex;
@@ -47,7 +47,11 @@ input, label{
 .div-header form input{
     background-color: transparent;
 
-    width: 700px;
-    height: 60px;
-    margin-bottom: 20px;
+    width: 75vw;
+    height: 6vh;
+    margin-bottom: 2vh;
+}
+
+@media(max-width: 992px){
+
 }
