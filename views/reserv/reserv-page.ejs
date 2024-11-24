@@ -9,7 +9,6 @@ Minhas Reservas</title>
 <% } %>
 <body>
     <div class="tetudo">
-
         <div class="metade1">
             <div class="menu-perfil">
 
@@ -32,6 +31,7 @@ Minhas Reservas</title>
                 </div>
             </div>
         </div>
+
 
         <div class="metade2">
             <div class="container border-defaul">
@@ -79,8 +79,52 @@ Minhas Reservas</title>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <div class="hide-div">
+        <%- include ("../partials/navbar-mobile.ejs") %>
+
+        <div class="title-align">
+            <h2>Minhas reservas</h2>
+        </div>
+
+        <div class="reserv-list">
+            <!-- SIM é TUDO ISSO -->
+
+            <% reservas.forEach((reserva) => { %>
+                <div class="reserv">
+                    <div class="day">
+                        <div class="yellow-bar"></div>
+                        <div class="special-day">
+                            <% 
+                                // Adiciona o fuso horário para garantir a exibição correta
+                                const dataReserva = new Date(reserva.data_reserva);
+                                dataReserva.setHours(dataReserva.getHours() + 3); // Ajuste para GMT-3
+            
+                                const diaSemana = dataReserva.toLocaleString('pt-BR', { weekday: 'short' });
+                                const diaMes = dataReserva.getDate();
+                            %>
+                            
+                            <p><%= diaSemana %></p> <!-- Dia da semana -->
+                            <h3><strong><%= diaMes %></strong></h3> <!-- Dia no mês -->
+                            <p><%= reserva.prev_chegada.slice(0, 5) %></p> <!-- Hora no formato HH:MM -->
+                        </div>
+                        <div class="line"></div>
+                    </div>
+                    <div class="reserv-content">
+                        <h3><strong>Vaga <%= reserva.vaga.numero %></strong></h3> <!-- Número da vaga -->
+                        <p>Veículo - <strong><%= reserva.veiculo.marca %> <%= reserva.veiculo.modelo %> <%= reserva.veiculo.cor %></strong></p> <!-- Detalhes do veículo -->
+                        <p>Placa - <strong><%= reserva.veiculo.placa %></strong></p> <!-- Placa do carro -->
+                    </div>
+                    <div class="cancel-button">
+                        <!-- Adiciona evento de confirmação ao clicar no link -->
+                        <a href="/cancel-reserv?id_reserva=<%= reserva.id_reserva %>" onclick="return confirmCancel()">Cancelar</a>
+                    </div>
+                </div>
+            <% }) %>                        
+        </div>
+    </div>
+
 </body>
 <%- include ("../partials/footer.ejs") %>
 <script>

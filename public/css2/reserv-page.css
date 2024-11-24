@@ -1,15 +1,16 @@
 .reserv-list{
     height: 80%;
 }
+
 .reserv{
-    height: 110px;
+    height: 17vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-style: solid;
     border-color: var(--border-default);
-    border-radius: 10px;
-    margin-bottom: 20px;
+    border-radius: 2vh;
+    margin-bottom: 3vh;
 }
 .day{
     width: 19%;
@@ -20,10 +21,10 @@
 }
 .day .yellow-bar{
     height: 96%;
-    width: 15px;
+    width: 10%;
     margin-left: 2%;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-left-radius: 2vh;
+    border-bottom-left-radius: 2vh;
     background-color: var(--terciary-color);
 }
 .day .special-day{
@@ -35,6 +36,7 @@
 }
 .day .special-day h3{
     margin-bottom: 0;
+    font-size: 4vh;
 }
 .day .line{
     height: 80%;
@@ -53,4 +55,19 @@
 .cancel-button a:hover{
     transition: 300ms;
     color: #b80000;
+}
+
+@media(max-width: 992px){
+    h3{
+        font-size: 3vh;
+    }
+    .day .special-day h3{
+        font-size: 3vh;
+    }
+    .reserv{
+        height: 16vh;
+    }
+    .reserv-content p, .cancel-button a{
+        font-size: 1.5vh;
+    }
 }
