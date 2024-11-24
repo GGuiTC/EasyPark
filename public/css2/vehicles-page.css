@@ -16,4 +16,27 @@ table tbody tr:nth-child(odd) {
 table tbody tr:nth-child(even) {
     background-color: #f2f2f2; /* Cor para linhas pares */
 }
+
+@media(max-width: 992px){
+    .table{
+        width: 90%;
+    }
+    .table th, .table td{
+        font-size: 1.5vh;
+    }
+    .table td a, .table td button{
+        height: auto;
+        background-color: white;
+        border: none;
+        font-size: 1.5vh;
+        font-weight: 500;
+        padding: 0 0.5vw;
+    }
+    .table td a{
+        color: var(--terciary-color);
+    }
+    .table td button{
+        color: var(--ocupado-color);
+    }
+}
   
