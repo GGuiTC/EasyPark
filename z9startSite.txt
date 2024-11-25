@@ -1,1 +1,19 @@
+-------------------------- DO ZAYMÃ --------------------------
+ngrok http --domain=shining-bear-helped.ngrok-free.app --scheme=http 3000
+
+ngrok http --domain=shining-bear-helped.ngrok-free.app --bind-tls=false 3000
+
+
+
+
+
+
+-------------------------- INICIA PELO NODE --------------------------
 NGROK_AUTHTOKEN=2oqNm6IKhMOBZ5MztGwRVVZS0lX_33uZSLQsZ3Kxi46K4qJYd node index.js
+
+
+-------------------------- INICIA COM O TERMINAL NGROK --------------------------
+ngrok http --url=shining-bear-helped.ngrok-free.app 3000
+
+----- CONFIG PRA ADICIONAR AUTHTOKEN -----
+ngrok config add-authtoken 2oqNm6IKhMOBZ5MztGwRVVZS0lX_33uZSLQsZ3Kxi46K4qJYd

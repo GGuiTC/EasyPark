@@ -105,8 +105,9 @@ app.listen(3000,()=>{
 
 
 // Get your endpoint online with a reserved domain
-ngrok.connect({ 
-    addr: 3000, 
-    authtoken_from_env: true, 
-    domain: 'shining-bear-helped.ngrok-free.app' // substitua por seu domínio reservado
-}).then(listener => console.log(`Ingress established at: ${listener.url()}`));
+// ngrok.connect({ 
+//     addr: 3000, 
+//     authtoken_from_env: true,
+//     // proto: `http`,
+//     domain: 'shining-bear-helped.ngrok-free.app' // substitua por seu domínio reservado
+// }).then(listener => console.log(`Ingress established at: ${listener.url()}`));
