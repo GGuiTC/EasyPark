@@ -13,7 +13,11 @@ dadosSaida = conexao.define('dados_saida', {
         type: Sequelize.DATEONLY,
         allowNull: true,
     },
-    tempo_chegada: {
+    horario_chegada: {
+        type: Sequelize.TIME,
+        allowNull: true,
+    },
+    tempo_estacionado: {
         type: Sequelize.TIME,
         allowNull: true,
     },
