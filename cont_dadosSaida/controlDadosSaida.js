@@ -23,15 +23,23 @@ router.get("/dados_saida_updt", adminAut, (req,res)=>{
 // TESTE DE VINDA DE DADOS
 //VEICULO CHEGA
 router.post("/dados_arduino", (req,res)=>{
-    let id_vaga = req.body.id_vaga; // id vaga
-    let date = req.body.date; // data chegada
-    let hr_chegada = req.body.hr_chegada; // horario chegada
+    let id_vaga = req.body.id_vaga; // id vaga vindo do post
+
+    // Obtém a data e o horário atuais
+    let now = new Date();
+    let date = now.toISOString().split("T")[0]; // Captura a data no formato YYYY-MM-DD
+    let hr_chegada = now.toTimeString().split(" ")[0]; // Captura o horário no formato HH:MM:SS
 
     dadosSaida.create({
         id_vaga: id_vaga,
         data_chegada: date,
         horario_chegada: hr_chegada
-    })
+    }).then(() => {
+        res.status(201).send("Dados registrados com sucesso!");
+    }).catch((error) => {
+        console.error("Erro ao salvar dados no banco:", error);
+        res.status(500).send("Erro ao salvar os dados.");
+    });
 })
 
 //VEICULO SAI

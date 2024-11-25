@@ -66,8 +66,8 @@ router.post("/reserva_vaga", adminAut, (req, res) => {
             const promises = vagas.map((vaga) => {
                 return Reserva.findOne({
                     where: {
-                        data_reserva: date,
-                        prev_chegada: {
+                        data_chegada: date,
+                        horario_chegada: {
                             [Op.lte]: time // Considera todas as reservas a partir do horário selecionado
                         },
                         id_vaga: vaga.id_vaga
