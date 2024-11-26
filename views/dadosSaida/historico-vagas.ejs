@@ -1,0 +1,96 @@
+<% if(usuario.nivel_usuario == 1){ %>
+
+<%- include ("../partials/header.ejs") %>
+Histórico Vagas</title>
+<link rel="stylesheet" href="/css2/historico-vagas.css">
+</head>
+<%- include ("../partials/navbar4.ejs") %>
+<body>
+    <div class="tetudo justify-center">
+        <div class="margin70">
+            <div class="title-align">
+                <h1>Histórico Vagas</h1>
+            </div>
+            
+            <form method="get" action="/historico_vagas" class="mb-4">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="data">Data da Chegada</label>
+                        <input type="date" name="data" value="<%= filtros?.data || '' %>" class="form-control" placeholder="Data da Chegada">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="horario">Horário da Chegada</label>
+                        <input type="time" name="horario" value="<%= filtros?.horario || '' %>" class="form-control" placeholder="Horário da Chegada">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="tempo">Tempo Estacionado</label>
+                        <input type="time" name="tempo" value="<%= filtros?.tempo || '' %>" class="form-control" placeholder="Tempo Estacionado">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="numero">Número da Vaga</label>
+                        <input type="text" name="numero" value="<%= filtros?.numero || '' %>" class="form-control" placeholder="Número da Vaga">
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col text-center">
+                        <button type="submit" class="btn btn-primary">Pesquisar</button>
+                        <a href="/historico_vagas" class="btn btn-secondary">Limpar Filtros</a>
+                    </div>
+                </div>
+            </form>
+            
+            <table class="table table-bordered">
+                <thead align="center">
+                    <tr>
+                        <th>Data da Chegada</th>
+                        <th>Horário da Chegada</th>
+                        <th>Tempo Estacionado</th>
+                        <th>Número da Vaga</th>
+                    </tr>
+                </thead>
+                <% if (dadosSaidas.length) { %>
+                    <% dadosSaidas.forEach((ds) => { %>
+                        <tbody align="center">
+                            <tr>
+                                <td><%= ds.data_chegada %></td>
+                                <td><%= ds.horario_chegada %></td>
+                                <td><%= ds.tempo_estacionado %></td>
+                                <td><%= ds.vaga.numero %></td>
+                            </tr>
+                        </tbody>
+                    <% }) %>
+                <% } else { %>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" align="center">Nenhum dado encontrado</td>
+                        </tr>
+                    </tbody>
+                <% } %>
+            </table>
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+<% }else{ %>
+    
+<%- include ("../partials/header.ejs") %>
+Histórico Vagas</title>
+</head>
+<%- include ("../partials/navbar3.ejs") %>
+<body>
+
+    <div class="tela-inteira">
+        <h1>PERMISSÃO NEGADA!!</h1>
+        <p>Apenas Administradores podem entrar nessa página, <a href="/dashboard">clique aqui</a> para voltar.</p>
+    </div>
+    
+</body>
+</html>
+
+<% } %>

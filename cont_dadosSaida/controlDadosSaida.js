@@ -3,6 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const adminAut = require('../middleware/adminAutoriz');
 const dadosSaida = require('./dadosSaida');
+const Vaga = require('../cont_park/Park')
 const { where } = require('sequelize');
 
 router.use(bodyParser.json());
@@ -87,7 +88,7 @@ router.get("/dados_arduino/:id_vaga", (req,res)=>{
 
     // Obtém a data e o horário atuais
     let now = new Date();
-    let date = now.toISOString().split("T")[0]; // Captura a data no formato YYYY-MM-DD
+    let date = now.toISOString().split("T")[0]; //Captura a data no formato YYYY-MM-DD
     let hr_chegada = now.toTimeString().split(" ")[0]; // Captura o horário no formato HH:MM:SS
 
     dadosSaida.create({
@@ -133,6 +134,38 @@ router.get("/dados_arduino/:id_dados/:tempo_est", (req,res)=>{
     })
 })
 
+router.get("/historico_vagas", adminAut, async (req, res) => {
+    let usuario = req.session.usuario;
+
+    const { data, horario, tempo, numero } = req.query;
+
+    let whereClause = {};
+    if (data) whereClause.data_chegada = data;
+    if (horario) whereClause.horario_chegada = horario;
+    if (tempo) whereClause.tempo_estacionado = tempo;
+
+    let includeClause = [{
+        model: Vaga,
+        as: 'vaga',
+        attributes: ['numero'],
+    }];
+
+    if (numero) {
+        includeClause[0].where = { numero };
+    }
+
+    try {
+        const dadosSaidas = await dadosSaida.findAll({
+            where: whereClause,
+            include: includeClause,
+        });
+
+        res.render("dadosSaida/historico-vagas", { usuario, dadosSaidas, filtros: { data, horario, tempo, numero } });
+    } catch (error) {
+        console.error("Erro ao buscar dados:", error);
+        res.status(500).send("Erro ao carregar histórico de vagas.");
+    }
+});
 
 
 

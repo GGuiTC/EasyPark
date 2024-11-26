@@ -1,0 +1,25 @@
+th{
+    background-color: var(--terciary-color);
+    color: var(--primary-color);
+}
+
+.tetudo{
+    height: max-content;
+}
+.title-align{
+    height: 25vh;
+}
+.text-center button{
+    background-color: var(--terciary-color);
+    border: none;
+}
+.text-center button:hover{
+    background-color: var(--hovering-terciary-color);
+}
+.text-center a{
+    background-color: var(--secundary-color);
+    border: none;
+}
+.text-center a:hover{
+    background-color: var(--hovering-secundary-color);
+}

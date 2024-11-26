@@ -260,7 +260,21 @@ input::-webkit-input-placeholder{
 .nav-container .nav-list {
     display: flex;
     list-style: none;
-  }
+}
+
+/* PERMISSAO NEGADA */
+.tela-inteira{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 88vh;
+    background-color: var(--terciary-color);
+}
+
+.tela-inteira a{
+    color: var(--primary-color);
+}
 
 @media (max-width: 992px) {
     /* Esconde navbar */

@@ -1,13 +1,10 @@
+<% if(usuario.nivel_usuario == 1){ %>
 <%- include ("../partials/header.ejs") %>
 Cria Vaga</title>
 <link rel="stylesheet" href="/css2/park-page.css">
 <link rel="stylesheet" href="/css2/mapa-cria-vaga.css">
 </head>
-<% if(usuario.nivel_usuario == 1){ %>
-    <%- include ("../partials/navbar4.ejs") %>
-<% }else{ %>
-    <%- include ("../partials/navbar3.ejs") %>
-<% } %>
+<%- include ("../partials/navbar4.ejs") %>
 <body>
     <div class="tetudo justify-center">
         <h1>Mapa do Estacionamento</h1>
@@ -63,3 +60,23 @@ Cria Vaga</title>
     </div>
 </body>
 <%- include ("../partials/footer.ejs") %>
+
+
+
+<% }else{ %>
+    
+    <%- include ("../partials/header.ejs") %>
+    Cria Vaga</title>
+    </head>
+    <%- include ("../partials/navbar3.ejs") %>
+    <body>
+    
+        <div class="tela-inteira">
+            <h1>PERMISSÃO NEGADA!!</h1>
+            <p>Apenas Administradores podem entrar nessa página, <a href="/dashboard">clique aqui</a> para voltar.</p>
+        </div>
+        
+    </body>
+    </html>
+    
+<% } %>
