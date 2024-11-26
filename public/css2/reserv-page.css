@@ -27,6 +27,14 @@
     border-bottom-left-radius: 2vh;
     background-color: var(--terciary-color);
 }
+.day .gray-bar{
+    height: 96%;
+    width: 10%;
+    margin-left: 2%;
+    border-top-left-radius: 2vh;
+    border-bottom-left-radius: 2vh;
+    background-color: var(--text-default);
+}
 .day .special-day{
     display: flex;
     flex-direction: column;
