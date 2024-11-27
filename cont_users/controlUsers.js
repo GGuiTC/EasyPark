@@ -5,6 +5,7 @@ const Usuario = require('./Users');
 const Perfil = require('../cont_perfil/Perfil')
 const bcrypt = require('bcryptjs');
 const adminAut = require('../middleware/adminAutoriz');
+const { Op } = require('sequelize');
 
 router.use(bodyParser.urlencoded({extended: true}));
 
@@ -20,6 +21,11 @@ router.get("/accounts_page", adminAut, (req,res)=>{
     let usuario = req.session.usuario;
     res.render("user/change_account", { usuario })
 })
+
+// router.get("/define_admin", adminAut, (req,res)=>{
+//     let usuario = req.session.usuario;
+//     res.render("user/define_admin", {usuario});
+// })
 
 router.post("/cadastro_usuario", (req,res)=>{
     let email = req.body.email;
@@ -85,6 +91,52 @@ router.post("/loga_user", (req,res)=>{
         }
     })
 })
+
+
+router.get("/define_admin", adminAut, async (req, res) => {
+    const { search } = req.query; // Captura o valor da pesquisa.
+    let where = {};
+    let usuario_session = req.session.usuario;
+
+    // Condição para pesquisa.
+    if (search) {
+        where = {
+            [Op.or]: [
+                { id_usuario: { [Op.like]: `%${search}%` } },
+                { nome: { [Op.like]: `%${search}%` } },
+                { email: { [Op.like]: `%${search}%` } },
+                { nivel_usuario: { [Op.like]: `%${search}%` } }
+            ]
+        };
+    }
+
+    try {
+        const usuarios = await Usuario.findAll({ where });
+        res.render("user/define_admin", { usuario_session, usuarios, search });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Erro ao carregar usuários.");
+    }
+});
+
+router.post("/define_admin/:id/alterar-nivel", async (req, res) => {
+    const { id } = req.params;
+    const { nivel_usuario } = req.body;
+
+    try {
+        const usuario = await Usuario.findByPk(id);
+        if (usuario) {
+            usuario.nivel_usuario = nivel_usuario;
+            await usuario.save();
+        }
+        res.redirect("/define_admin");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Erro ao alterar nível do usuário.');
+    }
+});
+
+
 
 
 

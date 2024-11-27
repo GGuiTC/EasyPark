@@ -1,0 +1,82 @@
+<% if(usuario_session.id == 1){ %>
+ 
+<%- include ("../partials/header.ejs") %>
+Definir Administradores</title>
+<link rel="stylesheet" href="/css2/define_admin.css">
+</head>
+<%- include ("../partials/navbar4.ejs") %>
+<body>
+    <div class="tetudo justify-center">
+        <div class="margin70">
+            <div class="title-align">
+                <h1>Gerenciar usuários</h1>
+            </div>
+            <form method="GET" action="/define_admin" class="search-form">
+                <input type="text" name="search" placeholder="Pesquise por ID, Nome, Email ou Nível..." value="<%= search || '' %>" class="search-input">
+                <button type="submit" class="search-button">Buscar</button>
+            </form>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NOME</th>
+                        <th>EMAIL</th>
+                        <th>NIVEL</th>
+                        <th>AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (usuarios.length > 0) { %>
+                        <% usuarios.forEach(usuario => { %>
+                            <tr>
+                                <td><%= usuario.id_usuario %></td>
+                                <td><%= usuario.nome %></td>
+                                <td><%= usuario.email %></td>
+                                <td><%= usuario.nivel_usuario === '1' ? 'Admin' : 'Usuário' %></td>
+                                <td>
+                                    <form method="POST" action="/define_admin/<%= usuario.id_usuario %>/alterar-nivel" class="update-form">
+                                        <select name="nivel_usuario" class="select-nivel">
+                                            <option value="1" <%= usuario.nivel_usuario === '1' ? 'selected' : '' %>>Admin</option>
+                                            <option value="2" <%= usuario.nivel_usuario === '2' ? 'selected' : '' %>>Usuário</option>
+                                        </select>
+                                        <button type="submit" class="update-button">Alterar</button>
+                                    </form>                                    
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="5">Nenhum usuário encontrado.</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+<%- include ("../partials/footer.ejs") %>
+
+
+
+
+
+
+
+<% }else{ %>
+
+    <%- include ("../partials/header.ejs") %>
+    Histórico Vagas</title>
+    </head>
+    <%- include ("../partials/navbar3.ejs") %>
+    <body>
+    
+        <div class="tela-inteira">
+            <h1>PERMISSÃO NEGADA!!</h1>
+            <p>Apenas Administradores podem entrar nessa página, <a href="/dashboard">clique aqui</a> para voltar.</p>
+        </div>
+        
+    </body>
+    </html>
+
+<% } %>
