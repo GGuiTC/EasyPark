@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
 
-// ROTAS PRA TESTE DE VINDAS DE DADOS
+// ROTAS PRA MEIO ALTERNATIVO DE VINDAS DE DADOS
 router.get("/dados_saida", adminAut, (req,res)=>{
     let usuario = req.session.usuario
     res.render("dadosSaida/dadosSaida", {usuario});
@@ -22,74 +22,14 @@ router.get("/dados_saida_updt", adminAut, (req,res)=>{
 })
 
 
-// TESTE DE VINDA DE DADOS
-//VEICULO CHEGA
-// router.post("/dados_arduino", (req,res)=>{
-//     let id_vaga = req.body.id_vaga; // id vaga vindo do post
+// VINDA DE DADOS
+// VEICULO CHEGA
+router.post("/dados_arduino", (req,res)=>{
+    let id_vaga = req.body.id_vaga;
 
-//     // Obtém a data e o horário atuais
-//     let now = new Date();
-//     let date = now.toISOString().split("T")[0]; // Captura a data no formato YYYY-MM-DD
-//     let hr_chegada = now.toTimeString().split(" ")[0]; // Captura o horário no formato HH:MM:SS
-
-//     dadosSaida.create({
-//         id_vaga: id_vaga,
-//         data_chegada: date,
-//         horario_chegada: hr_chegada
-//     }).then((ds) => {
-//         id_vaga = ds.id_vaga;
-//         date = ds.data_chegada;
-//         hr_chegada = ds.horario_chegada;
-
-//         dadosSaida.findOne({
-//             where:{
-//                 id_vaga: id_vaga,
-//                 data_chegada: date,
-//                 horario_chegada: hr_chegada
-//             }
-//         }).then((DS)=>{
-//             id_dados = DS.id_dados;
-//             console.log(id_dados);
-//             // res.status(201).send(id_dados);
-//         })
-//     }).catch((error) => {
-//         console.error("Erro ao mandar dados:", error);
-//         res.status(500).send("Erro ao mandar os dados ao arduino.");
-//     });
-// })
-
-
-
-
-
-
-// //VEICULO SAI
-// router.post("/dados_arduino_update", (req,res)=>{
-//     let id_dados = req.body.id_dados; // id da vaga vinda do arduino
-//     let time = req.body.time; // tempo do veículo estacionado
-
-//     dadosSaida.update({
-//         tempo_estacionado: time
-//     }, {
-//         where: {
-//             id_dados: id_dados
-//         }
-//     })
-// })
-
-
-
-
-
-
-//               GET PARAMS
-router.get("/dados_arduino/:id_vaga", (req,res)=>{
-    let id_vaga = req.params.id_vaga; // id vaga vindo da url
-
-    // Obtém a data e o horário atuais
     let now = new Date();
-    let date = now.toISOString().split("T")[0]; //Captura a data no formato YYYY-MM-DD
-    let hr_chegada = now.toTimeString().split(" ")[0]; // Captura o horário no formato HH:MM:SS
+    let date = now.toISOString().split("T")[0];
+    let hr_chegada = now.toTimeString().split(" ")[0];
 
     dadosSaida.create({
         id_vaga: id_vaga,
@@ -108,8 +48,7 @@ router.get("/dados_arduino/:id_vaga", (req,res)=>{
             }
         }).then((DS)=>{
             id_dados = DS.id_dados;
-            // console.log(id_dados);
-            res.status(200).send(String(id_dados));
+            res.render("/dadosSaida/dadosSaidaUpdt")
         })
     }).catch((error) => {
         console.error("Erro ao mandar dados:", error);
@@ -117,23 +56,25 @@ router.get("/dados_arduino/:id_vaga", (req,res)=>{
     });
 })
 
-//               GET PARAMS
-router.get("/dados_arduino/:id_dados/:tempo_est", (req,res)=>{
-    let id_dados = req.params.id_dados;
-    let tempo_est = req.params.tempo_est;
+//VEICULO SAI
+router.post("/dados_arduino_update", (req,res)=>{
+    let id_dados = req.body.id_dados;
+    let time = req.body.time;
 
-    let id_dados_int = parseInt(id_dados, 10);
-    let tempo_est_int = parseInt(tempo_est, 10);
-
-        dadosSaida.update({
-        tempo_estacionado: tempo_est_int
+    dadosSaida.update({
+        tempo_estacionado: time
     }, {
         where: {
-            id_dados: id_dados_int
+            id_dados: id_dados
         }
     })
 })
 
+
+
+
+
+// PAGINA HISTORICO
 router.get("/historico_vagas", adminAut, async (req, res) => {
     let usuario = req.session.usuario;
 
@@ -169,45 +110,55 @@ router.get("/historico_vagas", adminAut, async (req, res) => {
 
 
 
-
-
-
-
-// ----------------------- MÉTODOS PARA PEGAR VALORES DO ARDUINO -----------------------
-//               POST
-// router.post("/dados_arduino", (req,res)=>{
-//     let id_vaga = req.body.id_vaga;
-//     let date = req.body.date;
-//     let time = req.body.time;
-
-//     console.log(id_vaga);
-//     console.log(date);
-//     console.log(time);
-// })
-
-
-//               GET QUERY
-// router.get("/dados_arduino", (req,res)=>{
-//     let id_vaga = req.query.id_vaga;
-//     let date = req.query.date;
-//     let time = req.query.time;
-
-//     console.log(id_vaga);
-//     console.log(date);
-//     console.log(time);
-// })
-
-
-//               GET PARAMS
-// router.get("/dados_arduino/:id_vaga/:date/:time", (req,res)=>{
+// // DADOS VEM
+// router.get("/dados_arduino/:id_vaga", (req,res)=>{
 //     let id_vaga = req.params.id_vaga;
-//     let date = req.params.date;
-//     let time = req.params.time;
 
-//     console.log(id_vaga);
-//     console.log(date);
-//     console.log(time);
+//     let now = new Date();
+//     let date = now.toISOString().split("T")[0];
+//     let hr_chegada = now.toTimeString().split(" ")[0];
+
+//     dadosSaida.create({
+//         id_vaga: id_vaga,
+//         data_chegada: date,
+//         horario_chegada: hr_chegada
+//     }).then((ds) => {
+//         id_vaga = ds.id_vaga;
+//         date = ds.data_chegada;
+//         hr_chegada = ds.horario_chegada;
+
+//         dadosSaida.findOne({
+//             where:{
+//                 id_vaga: id_vaga,
+//                 data_chegada: date,
+//                 horario_chegada: hr_chegada
+//             }
+//         }).then((DS)=>{
+//             id_dados = DS.id_dados;
+//             // console.log(id_dados);
+//             res.status(200).send(String(id_dados));
+//         })
+//     }).catch((error) => {
+//         console.error("Erro ao mandar dados:", error);
+//         res.status(500).send("Erro ao mandar os dados ao arduino.");
+//     });
 // })
 
+// // DADOS VOLTAM
+// router.get("/dados_arduino/:id_dados/:tempo_est", (req,res)=>{
+//     let id_dados = req.params.id_dados;
+//     let tempo_est = req.params.tempo_est;
+
+//     let id_dados_int = parseInt(id_dados, 10);
+//     let tempo_est_int = parseInt(tempo_est, 10);
+
+//         dadosSaida.update({
+//         tempo_estacionado: tempo_est_int
+//     }, {
+//         where: {
+//             id_dados: id_dados_int
+//         }
+//     })
+// })
 
 module.exports = router;
