@@ -45,36 +45,34 @@ router.post("/reserva_vaga", adminAut, (req, res) => {
     let date = req.body.date;
     let time = req.body.time;
     let usuario = req.session.usuario;
-    let vagasStatus = []; // Array para armazenar o status de cada vaga
+    let vagasStatus = [];
 
-    // Busca todas as vagas em ordem crescente de id_vaga
     Vaga.findAll({
         order: [['id_vaga', 'ASC']]
     }).then((vagas) => {
-        // Adiciona a lógica para buscar dados da tabela dados_saida
         DadosSaida.findAll({
             where: {
                 data_chegada: date,
                 horario_chegada: {
-                    [Op.lte]: time // Menor ou igual ao horário fornecido
+                    [Op.lte]: time
                 }
             }
         }).then((dadosSaida) => {
-            // Extrai os id_vaga ocupados dos registros de dados_saida
-            const vagasOcupadas = dadosSaida.map((dado) => dado.id_vaga);
+            const vagasOcupadas = dadosSaida
+                .filter((dado) => !dado.tempo_estacionado)
+                .map((dado) => dado.id_vaga);
 
             const promises = vagas.map((vaga) => {
                 return Reserva.findOne({
                     where: {
                         data_reserva: date,
                         prev_chegada: {
-                            [Op.lte]: time // Considera todas as reservas a partir do horário selecionado
+                            [Op.lte]: time
                         },
                         id_vaga: vaga.id_vaga
                     },
                     order: [['prev_chegada', 'DESC']]
                 }).then((reserva) => {
-                    // Verifica se a vaga está ocupada nos dados_saida ou reservada
                     const status = vagasOcupadas.includes(vaga.id_vaga)
                         ? "ocupado"
                         : reserva
@@ -90,9 +88,7 @@ router.post("/reserva_vaga", adminAut, (req, res) => {
                 });
             });
 
-            // Aguarda todas as Promises antes de renderizar a página
             Promise.all(promises).then(() => {
-                // Ordena o array vagasStatus por id_vaga, para garantir a ordem correta
                 vagasStatus.sort((a, b) => a.id_vaga - b.id_vaga);
 
                 res.render("park/park-page", { vagasStatus, date, time, usuario });
@@ -109,53 +105,6 @@ router.post("/reserva_vaga", adminAut, (req, res) => {
         res.status(500).send("Erro ao buscar as vagas.");
     });
 });
-
-
-// router.post("/reserva_vaga", adminAut, (req, res) => {
-//     let date = req.body.date;
-//     let time = req.body.time;
-//     let usuario = req.session.usuario;
-//     let vagasStatus = []; // Array para armazenar o status de cada vaga
-
-//     // Busca todas as vagas em ordem crescente de id_vaga
-//     Vaga.findAll({
-//         order: [['id_vaga', 'ASC']]
-//     }).then((vagas) => {
-//         const promises = vagas.map((vaga) => {
-//             return Reserva.findOne({
-//                 where: {
-//                     data_reserva: date,
-//                     prev_chegada: {
-//                         [Op.lte]: time // Considera todas as reservas a partir do horário selecionado
-//                     },
-//                     id_vaga: vaga.id_vaga
-//                 },
-//                 order: [['prev_chegada', 'DESC']]
-//             }).then((reserva) => {
-//                 vagasStatus.push({
-//                     id_vaga: vaga.id_vaga,
-//                     tipo_vaga: vaga.tipo_vaga,
-//                     numero: vaga.numero,
-//                     status: reserva ? "reservado" : "vazio"
-//                 });
-//             });
-//         });
-
-//         // Aguarda todas as Promises antes de renderizar a página
-//         Promise.all(promises).then(() => {
-//             // Ordena o array vagasStatus por id_vaga, para garantir a ordem correta
-//             vagasStatus.sort((a, b) => a.id_vaga - b.id_vaga);
-
-//             res.render("park/park-page", { vagasStatus, date, time, usuario });
-//         }).catch((error) => {
-//             console.error("Erro ao buscar status das reservas:", error);
-//             res.status(500).send("Erro ao processar os dados.");
-//         });
-//     }).catch((error) => {
-//         console.error("Erro ao buscar vagas:", error);
-//         res.status(500).send("Erro ao buscar as vagas.");
-//     });
-// });
 
 
 router.get("/reserva_vaga", adminAut, (req, res)=>{
@@ -199,7 +148,7 @@ router.post("/cadastro_reserva", (req,res)=>{
 });
 
 router.get("/cancel-reserv", adminAut, (req, res) => {
-    let id_reserva = req.query.id_reserva; // Obtém o parâmetro id_reserva do link
+    let id_reserva = req.query.id_reserva;
 
     if (!id_reserva) {
         return res.status(400).send("Reserva não especificada.");
@@ -208,7 +157,7 @@ router.get("/cancel-reserv", adminAut, (req, res) => {
     Reserva.destroy({
         where: { id_reserva: id_reserva }
     }).then(() => {
-        res.redirect("/reserv_page"); // Redireciona o usuário para a página de reservas após o cancelamento
+        res.redirect("/reserv_page");
     }).catch((error) => {
         console.error("Erro ao cancelar a reserva:", error);
         res.status(500).send("Erro ao cancelar a reserva.");
