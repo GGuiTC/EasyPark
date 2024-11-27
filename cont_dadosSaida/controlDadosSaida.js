@@ -48,7 +48,7 @@ router.post("/dados_arduino", (req,res)=>{
             }
         }).then((DS)=>{
             id_dados = DS.id_dados;
-            res.render("/dadosSaida/dadosSaidaUpdt")
+            console.log(id_dados);
         })
     }).catch((error) => {
         console.error("Erro ao mandar dados:", error);
