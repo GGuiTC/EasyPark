@@ -14,11 +14,10 @@ router.get("/perfil_page",adminAut, (req,res)=>{
     let nome = req.session.usuario.nome;
     let email = req.session.usuario.email;
     Perfil.findOne({
-        where: {id_usuario: id_usuario}
+        where: {id_perfil: id_usuario}
     }).then((perfil)=>{
         if(perfil == undefined){
             Perfil.create({
-                id_usuario: id_usuario,
                 nome: nome,
                 email: email
             }).then((perfil)=>{
@@ -43,7 +42,7 @@ router.post("/cadastra-edita-perfil", adminAut, (req,res)=>{
 
 
     Perfil.findOne({
-        where: {id_usuario: id_perfil}
+        where: {id_perfil: id_perfil}
     }).then((perfil)=>{
         if(perfil != undefined){
             Perfil.update({
@@ -56,7 +55,7 @@ router.post("/cadastra-edita-perfil", adminAut, (req,res)=>{
                 data_nasc: data_nasc
             },
             {
-                where: {id_usuario: id_perfil}
+                where: {id_perfil: id_perfil}
             }).then(()=>{
                 res.redirect("/perfil_page");
             })
