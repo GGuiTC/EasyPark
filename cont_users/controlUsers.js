@@ -44,11 +44,9 @@ router.post("/cadastro_usuario", (req,res)=>{
                 senha: hash,
                 nivel_usuario: nivel_usuario,
             }).then((usuario)=>{
-                let id_usuario = usuario.id_usuario
                 let nome_perfil = usuario.nome
                 let email_perfil = usuario.email
                 Perfil.create({
-                    id_usuario: id_usuario,
                     nome: nome_perfil,
                     email: email_perfil
                 }).then(()=>{
