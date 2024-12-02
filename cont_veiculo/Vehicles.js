@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const conexao = require('../database/basedados');
+const Perfil = require('../cont_perfil/Perfil')
 
 Veiculo = conexao.define('veiculo', {
     id_veiculo:{
@@ -28,10 +29,18 @@ Veiculo = conexao.define('veiculo', {
         type: Sequelize.ENUM('CARRO', 'MOTO', 'CAMINHÃO', 'VAN', 'MOTORHOME'),
         allowNull: false
     },
-    id_usuario: {
+    id_perfil: {
         type: Sequelize.INTEGER,
         allowNull: false,
     }
+});
+
+Perfil.hasMany(Veiculo, {
+    foreignKey: "id_perfil"
+});
+Veiculo.belongsTo(Perfil, {
+    foreignKey: "id_perfil",
+    as: "perfil"
 });
 
 module.exports = Veiculo;

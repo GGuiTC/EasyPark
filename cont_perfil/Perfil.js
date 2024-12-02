@@ -35,11 +35,7 @@ Perfil = conexao.define('perfil', {
     data_nasc:{
         type: Sequelize.DATEONLY,
         allowNull: true,
-    },
-    id_usuario:{
-        type: Sequelize.INTEGER,
-        allowNull: true
-    },
+    }
 });
 
 module.exports = Perfil;
