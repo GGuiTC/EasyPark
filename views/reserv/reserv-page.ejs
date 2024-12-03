@@ -108,31 +108,46 @@ Minhas Reservas</title>
             <% reservas.forEach((reserva) => { %>
                 <div class="reserv">
                     <div class="day">
-                        <div class="yellow-bar"></div>
+                        <%
+                            const dataAtual = new Date();
+                        
+                            const dataReserva = new Date(reserva.data_reserva);
+                            dataReserva.setHours(dataReserva.getHours() + 3);
+                        
+                            const horaReservaParts = reserva.prev_chegada.split(':');
+                            const horaReserva = new Date(dataReserva);
+                            horaReserva.setHours(horaReservaParts[0], horaReservaParts[1], horaReservaParts[2] || 0);
+
+                            let boolean = 0;
+                            if(dataAtual > dataReserva && dataAtual > horaReserva){
+                                boolean = 1;
+                            }else{
+                                boolean = 0;
+                            }
+
+                            const isPassado = dataAtual > dataReserva && dataAtual > horaReserva;
+                        
+                            const diaSemana = dataReserva.toLocaleString('pt-BR', { weekday: 'short' });
+                            const diaMes = dataReserva.getDate();
+                        %>
+                        <div class="<%= isPassado ? 'gray-bar' : 'yellow-bar' %>"></div>
                         <div class="special-day">
-                            <% 
-                                // Adiciona o fuso horário para garantir a exibição correta
-                                const dataReserva = new Date(reserva.data_reserva);
-                                dataReserva.setHours(dataReserva.getHours() + 3); // Ajuste para GMT-3
-            
-                                const diaSemana = dataReserva.toLocaleString('pt-BR', { weekday: 'short' });
-                                const diaMes = dataReserva.getDate();
-                            %>
                             
-                            <p><%= diaSemana %></p> <!-- Dia da semana -->
-                            <h3><strong><%= diaMes %></strong></h3> <!-- Dia no mês -->
-                            <p><%= reserva.prev_chegada.slice(0, 5) %></p> <!-- Hora no formato HH:MM -->
+                            <p><%= diaSemana %></p>
+                            <h3><strong><%= diaMes %></strong></h3>
+                            <p><%= reserva.prev_chegada.slice(0, 5) %></p>
                         </div>
                         <div class="line"></div>
                     </div>
                     <div class="reserv-content">
-                        <h3><strong>Vaga <%= reserva.vaga.numero %></strong></h3> <!-- Número da vaga -->
-                        <p>Veículo - <strong><%= reserva.veiculo.marca %> <%= reserva.veiculo.modelo %> <%= reserva.veiculo.cor %></strong></p> <!-- Detalhes do veículo -->
-                        <p>Placa - <strong><%= reserva.veiculo.placa %></strong></p> <!-- Placa do carro -->
+                        <h3><strong>Vaga <%= reserva.vaga.numero %></strong></h3>
+                        <p>Veículo - <strong><%= reserva.veiculo ? `${reserva.veiculo.marca} ${reserva.veiculo.modelo} ${reserva.veiculo.cor}` : 'Não encontrado' %></strong></p>
+                        <p>Placa - <strong><%= reserva.veiculo ? reserva.veiculo.placa : 'Não encontrada' %></strong></p>
                     </div>
                     <div class="cancel-button">
-                        <!-- Adiciona evento de confirmação ao clicar no link -->
-                        <a href="/cancel-reserv?id_reserva=<%= reserva.id_reserva %>" onclick="return confirmCancel()">Cancelar</a>
+                        <% if(boolean == 0){ %>
+                            <a href="/cancel-reserv?id_reserva=<%= reserva.id_reserva %>" onclick="return confirmCancel()">Cancelar</a>
+                        <% } %>
                     </div>
                 </div>
             <% }) %>                        
