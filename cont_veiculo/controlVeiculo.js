@@ -12,7 +12,7 @@ router.get("/vehicle_page", adminAut, (req,res)=>{
     let id_usuario = req.session.usuario.id;
     let nome = req.session.usuario.nome;
     Veiculo.findAll({
-        where: {id_usuario: id_usuario}
+        where: {id_perfil: id_usuario}
     }).then((veiculo)=>{
         res.render("vehicles/vehicles-page", { veiculo, nome, usuario });
     })
