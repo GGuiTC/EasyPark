@@ -18,28 +18,28 @@ Altera Veículo</title>
                     <div class="inputes">
                         <label>Tipo</label>
                         <select name="tipo" id="tipo" class="input_inputes" required>
-                            <option value="carro" <%= (veiculo.tipo_veiculo === 'carro') ? 'selected' : '' %> >Carro</option>
-                            <option value="moto" <%= (veiculo.tipo_veiculo === 'moto') ? 'selected' : '' %> >Moto</option>
-                            <option value="caminhao" <%= (veiculo.tipo_veiculo === 'caminhao') ? 'selected' : '' %> >Caminhão</option>
-                            <option value="van" <%= (veiculo.tipo_veiculo === 'van') ? 'selected' : '' %> >Van</option>
-                            <option value="motorhome" <%= (veiculo.tipo_veiculo === 'motorhome') ? 'selected' : '' %> >Motorhome</option>
+                            <option value="CARRO" <%= (veiculo.tipo_veiculo === 'carro') ? 'selected' : '' %> >CARRO</option>
+                            <option value="MOTO" <%= (veiculo.tipo_veiculo === 'moto') ? 'selected' : '' %> >MOTO</option>
+                            <option value="CAMINHÃO" <%= (veiculo.tipo_veiculo === 'caminhao') ? 'selected' : '' %> >CAMINHÃO</option>
+                            <option value="VAN" <%= (veiculo.tipo_veiculo === 'van') ? 'selected' : '' %> >VAN</option>
+                            <option value="MOTORHOME" <%= (veiculo.tipo_veiculo === 'motorhome') ? 'selected' : '' %> >MOTORHOME</option>
                         </select>
                     </div>
                     <div class="inputes">
                         <label>Marca</label>
-                        <input type="text" name="marca" id="marca" class="input_inputes" value="<%= veiculo.marca %>" required>
+                        <input type="text" name="marca" id="marca" class="input_inputes" value="<%= veiculo.marca %>" onblur="this.value = this.value.toUpperCase();" required>
                     </div>
                     <div class="inputes">
                         <label>Modelo</label>
-                        <input type="text" name="modelo" id="modelo" class="input_inputes" value="<%= veiculo.modelo %>" required>
+                        <input type="text" name="modelo" id="modelo" class="input_inputes" value="<%= veiculo.modelo %>" onblur="this.value = this.value.toUpperCase();" required>
                     </div>
                     <div class="inputes">
                         <label>Cor</label>
-                        <input type="text" name="cor" id="cor" class="input_inputes" value="<%= veiculo.cor %>" required>
+                        <input type="text" name="cor" id="cor" class="input_inputes" value="<%= veiculo.cor %>" onblur="this.value = this.value.toUpperCase();" required>
                     </div>
                     <div class="inputes">
                         <label>Placa</label>
-                        <input type="text" name="placa" id="placa" class="input_inputes" value="<%= veiculo.placa %>" required>
+                        <input type="text" name="placa" id="placa" class="input_inputes" value="<%= veiculo.placa %>" onblur="this.value = this.value.toUpperCase();" required>
                     </div>
                     <input type="hidden" name="id" id="id" value="<%= veiculo.id_veiculo %>">
                     <div class="justify-center">
