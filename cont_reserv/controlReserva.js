@@ -13,32 +13,43 @@ const { where, Op } = require('sequelize');
 router.use(bodyParser.urlencoded({extended: true}));
 
 
-router.get("/reserv_page", adminAut, (req, res) => {
-    let id = req.session.usuario.id;
-    let usuario = req.session.usuario;
-    let nome = req.session.usuario.nome;
+router.get("/reserv_page", adminAut, async (req, res) => {
+    try {
+        let id = req.session.usuario.id;
+        let usuario = req.session.usuario;
+        let nome = req.session.usuario.nome;
 
-    Perfil.findOne({
-        where: { id_usuario: id }
-    }).then((perfil) => {
+        const perfil = await Perfil.findOne({ where: { id_perfil: id } });
+        if (!perfil) {
+            return res.status(404).send("Perfil não encontrado.");
+        }
+
         const id_perfil = perfil.id_perfil;
 
-        Reserva.findAll({
+        const reservas = await Reserva.findAll({
             where: { id_perfil: id_perfil },
-            include: [
-                { model: Vaga, as: 'vaga', attributes: ['numero'] },
-                { model: Veiculo, as:'veiculo', attributes: ['marca', 'modelo', 'cor', 'placa'] }
-            ]
-        }).then((reservas) => {
-            res.render("reserv/reserv-page", { reservas, id, nome, usuario });
-        }).catch((error) => {
-            console.error("Erro ao buscar reservas:", error);
-            res.status(500).send("Erro ao buscar reservas.");
+            include: [{ model: Vaga, as: 'vaga', attributes: ['numero'] }]
         });
-    }).catch((error) => {
-        console.error("Erro ao buscar perfil:", error);
-        res.status(500).send("Erro ao buscar perfil.");
-    });
+
+        const reservasComVeiculos = await Promise.all(
+            reservas.map(async (reserva) => {
+                const veiculo = await Veiculo.findOne({
+                    where: { id_veiculo: reserva.id_veiculo },
+                    attributes: ['marca', 'modelo', 'cor', 'placa']
+                });
+
+                return {
+                    ...reserva.toJSON(),
+                    veiculo: veiculo || null
+                };
+            })
+        );
+
+        res.render("reserv/reserv-page", { reservas: reservasComVeiculos, id, nome, usuario });
+    } catch (error) {
+        console.error("Erro ao buscar reservas:", error);
+        res.status(500).send("Erro ao buscar reservas.");
+    }
 });
 
 router.post("/reserva_vaga", adminAut, (req, res) => {
@@ -116,12 +127,12 @@ router.get("/reserva_vaga", adminAut, (req, res)=>{
     let time = req.query.time;
     Perfil.findOne({
         where: {
-            id_usuario: id
+            id_perfil: id
         }
     }).then((perfil)=>{
         Veiculo.findAll({
             where:{
-                id_usuario: id
+                id_perfil: id
             }
         }).then((veiculos)=>{
             res.render("reserv/reserva-vaga", { perfil, veiculos, id_vaga, numero, date, time, usuario })

@@ -46,12 +46,25 @@ Minhas Reservas</title>
                         <% reservas.forEach((reserva) => { %>
                             <div class="reserv">
                                 <div class="day">
-                                    <% 
+                                    <%
+                                        const dataAtual = new Date();
+                                    
                                         const dataReserva = new Date(reserva.data_reserva);
                                         dataReserva.setHours(dataReserva.getHours() + 3);
-                        
-                                        const dataAtual = new Date();
-                                        const isPassado = dataAtual > dataReserva;
+                                    
+                                        const horaReservaParts = reserva.prev_chegada.split(':');
+                                        const horaReserva = new Date(dataReserva);
+                                        horaReserva.setHours(horaReservaParts[0], horaReservaParts[1], horaReservaParts[2] || 0);
+
+                                        let boolean = 0;
+                                        if(dataAtual > dataReserva && dataAtual > horaReserva){
+                                            boolean = 1;
+                                        }else{
+                                            boolean = 0;
+                                        }
+
+                                        const isPassado = dataAtual > dataReserva && dataAtual > horaReserva;
+                                    
                                         const diaSemana = dataReserva.toLocaleString('pt-BR', { weekday: 'short' });
                                         const diaMes = dataReserva.getDate();
                                     %>
@@ -65,11 +78,11 @@ Minhas Reservas</title>
                                 </div>
                                 <div class="reserv-content">
                                     <h3><strong>Vaga <%= reserva.vaga.numero %></strong></h3>
-                                    <p>Veículo - <strong><%= reserva.veiculo.marca %> <%= reserva.veiculo.modelo %> <%= reserva.veiculo.cor %></strong></p>
-                                    <p>Placa - <strong><%= reserva.veiculo.placa %></strong></p>
+                                    <p>Veículo - <strong><%= reserva.veiculo ? `${reserva.veiculo.marca} ${reserva.veiculo.modelo} ${reserva.veiculo.cor}` : 'Não encontrado' %></strong></p>
+                                    <p>Placa - <strong><%= reserva.veiculo ? reserva.veiculo.placa : 'Não encontrada' %></strong></p>
                                 </div>
                                 <div class="cancel-button">
-                                    <% if(dataAtual < dataReserva){ %>
+                                    <% if(boolean == 0){ %>
                                         <a href="/cancel-reserv?id_reserva=<%= reserva.id_reserva %>" onclick="return confirmCancel()">Cancelar</a>
                                     <% } %>
                                 </div>

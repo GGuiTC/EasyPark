@@ -65,7 +65,7 @@ app.get("/data_page",adminAut, (req, res)=>{
     let id = req.session.usuario.id;
     Perfil.findOne({
         where: {
-            id_usuario: id
+            id_perfil: id
         }
     }).then((perfil)=>{
         if(perfil.telefone == undefined & perfil.sexo == undefined & perfil.cpf == undefined & perfil.rg == undefined & perfil.data_nasc == undefined){
@@ -74,7 +74,7 @@ app.get("/data_page",adminAut, (req, res)=>{
         else{
             Veiculo.findOne({
                 where: {
-                    id_usuario: id
+                    id_perfil: id
                 }
             }).then((veiculos)=>{
                 if(veiculos == undefined){
