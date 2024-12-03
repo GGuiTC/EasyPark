@@ -32,7 +32,7 @@ router.post("/cadastro_veiculo", (req,res)=>{
     let cor = req.body.cor.toUpperCase();
     let placa = req.body.placa.toUpperCase();
     Veiculo.create({
-        id_usuario: id_usuario,
+        id_perfil: id_usuario,
         tipo_veiculo: tipo_veiculo,
         marca: marca,
         modelo: modelo,
