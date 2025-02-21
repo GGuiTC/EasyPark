@@ -4,7 +4,7 @@ const conexao = require('./database/basedados');
 const session = require('express-session');
 const adminAut = require('./middleware/adminAutoriz'); /* -------- MNADA PROS BAGULHO */
 const { where } = require('sequelize');
-const ngrok = require('@ngrok/ngrok');
+// const ngrok = require('@ngrok/ngrok');
 const flash = require('connect-flash');
 
 const Usuario = require('./cont_users/Users');
